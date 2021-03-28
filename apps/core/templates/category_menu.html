@@ -1,0 +1,52 @@
+{% comment %} <nav class="category-menu">
+    <div class="category-menu__header">
+        <img src="" alt="" class="category-menu__header-image">
+        <h4 class="category-menu__header-h4">Категории</h4>
+    </div>
+    <ul class="category-menu__ul">
+        {% for category in menu_categories %}
+            <a href="{% url 'category_detail' category.slug %}" class="category-menu__link">
+                <li class="category-menu__li">{{ category.title }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+</nav> {% endcomment %}
+
+{% comment %} <nav class="category-menu">
+    <div class="category-menu__header">
+        <img src="" alt="" class="category-menu__header-image">
+        <h4 class="category-menu__header-h4">Категории</h4>
+    </div>
+    <ul class="category-menu__ul">
+        {% for category in menu_categories %}
+            <a href="{% url 'category_detail' category.slug %}" class="category-menu__link">
+                <li class="category-menu__li">{{ category.title }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+</nav> {% endcomment %}
+
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Категории
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                {% for category in menu_categories %}
+                    <a href="{% url 'category_detail' category.slug %}" class="category-menu__link">
+                        <ul class="category-menu__ul">
+                            {% for category in menu_categories %}
+                                <a href="{% url 'category_detail' category.slug %}" class="category-menu__link">
+                                    <li class="category-menu__li">{{ category.title }}</li>
+                                </a>
+                            {% endfor %}
+                        </ul>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

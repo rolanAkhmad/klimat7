@@ -1,0 +1,140 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+{% endblock css %}
+
+
+{% block title %} {{ product.title }}  {{ product.category }} {% endblock title %}
+
+{% block content %}
+<div id="productapp">
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="product-details">
+                <div class="row">
+                    <div class="col-lg-12">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product-details-box">
+                            <img class="product-details__image" style="width:100%"src="{{ product.image.url }}" alt="">
+                            <div class="product-details-images">
+                                {% comment %} {% for image in product.images %}
+
+                                {% endfor %} {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product-details-box">
+                            <div class="product-details-box__top">
+                                <h5 class="product-details__title">{{ product.title }}</h5>
+                                <span class="product-details__category">{{ product.category }}</span>
+                                <p class="product-details__price">{{ product.price }}</p>
+                                <p class="product-details__description">{{ product.description }}</p>
+                            </div>
+                            <div class="product-details-box__bottom">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <button class="btn btn-primary minus">-</button>
+                                            <input class="count-input" type="text" class="form-control" value="1" required aria-label="Username">
+                                            <button class="btn btn-primary plus">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <button class="btn btn-primary product-details__button" data-id="{{ product.id }}">В корзину</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Дополнительно
+                                </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="product-details__detail-description">
+                                            {{ product.detail_description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Характеристики
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+<script>
+    var num = $('.product-details__price').html()
+    var num = parseFloat(num)
+    var result = num.toLocaleString();
+    var num = $('.product-details__price').html(result + ' &#8376')
+
+    $('.plus').on('click', function(){
+        var value = parseInt($('.count-input').val())
+        value += 1
+        $('.count-input').val(value)
+    })
+
+    $('.minus').on('click', function(){
+        var value = parseInt($('.count-input').val())
+        if (value != 1){
+            value -= 1
+        }
+        $('.count-input').val(value)
+    })
+
+    $('.product-details__button').on('click', function(){
+        product_id = $(this).attr('data-id')
+        count = parseInt($('.count-input').val())
+
+        if(count===0){ count = paseInt(1) }
+
+        data = {
+            product_id: product_id,
+            count: count
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'api_add_to_cart' %}",
+            data: data,
+            success: function(data){
+                console.log('success')
+                $.ajax({
+                    type: 'GET',
+                    url: "{% url 'api_cart_get_total_length' %}",
+                    success: function(response){
+                        var resp = response
+                        $('.cart-items__span').html(resp.total_length)
+                    }
+                })
+            }
+        })
+    })
+</script>
+{% endblock %}
