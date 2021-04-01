@@ -1,6 +1,7 @@
-$blue: #0063d1;
-$gray: #e1e1e1;
+$blue: #0063d1
+$gray: #e1e1e1
 $gray2: #777
+$gray-border: 1px solid rgba(0,0,0,.125)
 
 html
     height: 100%;
@@ -8,7 +9,6 @@ body
     display: flex;
     flex-direction: column;
     height: 100%;
-
 header
     flex: 0 0 auto;
 main
@@ -16,6 +16,42 @@ main
 footer
     flex: 0 0 auto;
 
+.cart-btn
+    position: relative
+    &-counter
+        position: absolute !important
+        top: -6px !important
+        right: -6px;
+
+
+.carousel-inner
+    border-radius: 0.25rem
+
+.card
+    transition: all 0.5s ease-out
+    overflow: hidden
+    &-block-link
+        text-decoration: none
+        color: #212529;
+        &:hover
+            color: blue
+    &-img-block
+        overflow: hidden
+    &-img-top
+        width: 10
+        transition: all 0.5s ease-out
+    &:hover > .card-img-block > .card-img-top
+        transform: scale(1.1);
+
+.header-container
+    border-bottom: $gray-border
+    border-radius: 0px 0px 5px 5px
+
+.nav-btn
+    margin-left: 8px
+
+.lh-1_5
+    line-height: 1.5
 
 .search-input
     padding: 10px 15px
@@ -36,9 +72,11 @@ footer
             margin-left: 20px
     &-menu
         margin-top: 30px
+        border-radius: 4px
         background: $blue !important
         &__navbar
-            font-size: 18px
+            font-size: 16px
+            padding: 0px 20 wpx
             text-transform: uppercase
             &-item
                 color: #fff !important
@@ -96,9 +134,9 @@ footer
         width: 140px
         height: 140px
     &__h4
-        padding-bottom: 40px
+        padding-bottom: 20px
         border-bottom: 1px solid #ccc
-        margin-bottom: 40px
+        margin-bottom: 20px
     &__content
         display: flex
         justify-content: space-around
@@ -108,30 +146,7 @@ footer
     &:hover &__control
         display: block
 
-.header-top__nav-cart
-    position: relative
-
-.cart-items
-    position: absolute;
-    display: flex
-    justify-content: center
-    align-items: center
-    box-sizing: border-box;
-    padding: 5px;
-    width: 20px;
-    border-radius: 100px;
-    height: 20px;
-    background: #0d6efd;
-    right: -8px;
-    top: -6px;
-    &__span
-        top: 0;
-        font-size: 13px;
-        color: #fff;
-        margin: 0 auto;
-        left: 7px;
-
-.store-slider
+.store-box
     &__header
         display: flex
         justify-content: space-between
@@ -139,8 +154,6 @@ footer
         border-bottom: 1px solid $gray
         padding-bottom: 30px
         margin-bottom: 30px
-    &__h4
-    &__link
     &-content-item
         box-sizing: border-box
         padding: 10px
@@ -187,19 +200,8 @@ footer
     &-content:hover > .slick-arrow
         opacity: 100
 
-
 .header-top-mobile
     display: none
-
-@media screen and (max-width: 991px)
-    .header-top-desktop
-        display: none
-    .header-top-mobile
-        display: block
-    .header-top__search-input
-        margin-top: 15px
-
-
 
 .footer
     &__top

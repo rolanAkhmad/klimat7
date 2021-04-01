@@ -14,6 +14,8 @@ from apps.store.api import api_add_to_cart, api_remove_from_cart, api_cart_get_t
 
 from .sitemaps import StaticViewSitemap, CategorySitemap, ProductSitemap
 
+from django.views.static import serve
+from django.urls import include, re_path
 
 sitemaps = {'static': StaticViewSitemap, 'product': ProductSitemap, 'category': CategorySitemap}
 
@@ -44,8 +46,11 @@ urlpatterns = [
     # Store
     path('<str:category_slug>/<str:slug>/', product_detail, name="product_detail"),
     path('<slug:slug>/', category_detail, name="category_detail"),
-    
-]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_URL}),
+    #re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    
+] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#if settings.DEBUG:
+    #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

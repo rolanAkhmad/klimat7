@@ -7,7 +7,7 @@ SECRET_KEY = '6c!7n$rihn07!f1fcx0j=d6@5&69l)whafat-0&m3)2ck%_d(q'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 DATABASES = {
@@ -17,11 +17,10 @@ DATABASES = {
     }
 }
 
-
-STATICFILES_DIRS = [
-    Path(BASE_DIR / 'static'),
-    Path(BASE_DIR / 'store/static'),
-    Path(BASE_DIR / 'core/static'),
-    Path(BASE_DIR / 'cart/static'),
-    Path(BASE_DIR / 'userprofiles/static'),
-]
+# STATICFILES_DIRS = [
+#    Path(BASE_DIR / 'static'),
+#    Path(BASE_DIR / 'store/static'),
+#    Path(BASE_DIR / 'core/static'),
+#    Path(BASE_DIR / 'cart/static'),
+#    Path(BASE_DIR / 'userprofiles/static'),
+# ]

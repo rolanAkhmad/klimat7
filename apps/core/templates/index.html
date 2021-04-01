@@ -5,139 +5,168 @@
 {% block content %}
     <div class="container">
         <div class="row">
-                <div class="col-lg-3">
-                    {% include 'category_menu.html' %}
-                    
-                    <div class="new-arrival left-side-slider">
-                        <h4 class="left-side-slider__h4">Новое поступление</h4>
-                        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-touch="true">
-                            <div class="carousel-inner">
+            <div class="col-lg-3">
+                {% include 'category_menu.html' %}
+                <div class="new-arrival-slide left-side-slider">
+                    <h4 class="left-side-slider__h4">Новое поступление</h4>
+                    <div class="left-side-sliders" id="new-arriwal-slider">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
                                 {% for product in new_product_list %}
-                                    <div class="carousel-item new_product_item">
-                                        <div class="left-side-slider__content">
-                                            <img src="{{ product.image.url }}" class="d-block" style="width: 140px; height: 140px;" alt="...">
-                                            <div class="left-side-slider__content-right">
-                                                <a href="{% url 'product_detail' product.category.slug product.slug %}" class="left-side-slider-content__link">{{ product.title }}</a>
-                                                <p class="left-side-slider-content__p">{{ product.category }}</p>
-                                                <p class="left-side-slider-content__p product_price">{{ product.price }}</p>
+                                    <li class="glide__slide">
+                                        <a href="{{ product.get_absolute_url }}" class="card card-block-link mb-3">
+                                            <div class="card-img-block">
+                                                <img src="{{ product.image.url }}"class="card-img-top" alt="...">
                                             </div>
-                                        </div>
-                                    </div>
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{product.title }}</h6>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary product_price">{{ product.price }}</span>
+                                                    <span class="badge bg-light text-dark">{{ product.category }}</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
                                 {% endfor %}
-                            </div>
-                            <div class="left-side-slider__control">
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-lg-9">
-                    <div class="container-fluid">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>First slide label</h5>
-                                        <p>Some representative placeholder content for the first slide.</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Second slide label</h5>
-                                        <p>Some representative placeholder content for the second slide.</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Third slide label</h5>
-                                        <p>Some representative placeholder content for the third slide.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <div class="store-slider">
-                            <div class="store-slider__header">
-                                <h4 class="store-slider__h4">Газовые котлы</h2>
-                                <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="store-slider__link">Смотреть всё</a>
-                            </div>
-                            <div class="store-slider-content">
-                            {% for boiler in boiler_list %}
-                                <div class="store-slider-content-item">
-                                    <div class="store-slider-content-item__box">
-                                        <a href="{% url 'product_detail' boiler.category.slug boiler.slug %}">
-                                            <img src="{{ boiler.image.url }}" alt="" class="store-slider-content-item__img" style="width:100%">
-                                        </a>
-                                        <div class="store-slider-content-item__footer">
-                                            <p class="store-slider-content-item__price product_price">{{ boiler.price }}</p>
-                                            <a href="{% url 'product_detail' boiler.category.slug boiler.slug %}" class="store-slider-content-item__title-link">
-                                                <p class="store-slider-content-item__title ">{{boiler.title}}</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            </div>
-                        </div>
-                        <div class="store-banner" style="margin-top: 80px;">
-                            <a href="">
-                                <img src="static/images/banner.jpg" style="width:100%; height: 175px; border-radius: 4px;" alt="">
-                            </a>
-                        </div>
-                        <div class="store-slider">
-                            <div class="store-slider__header">
-                                <h4 class="store-slider__h4">Газовые горелки</h2>
-                                <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="store-slider__link">Смотреть всё</a>
-                            </div>
-                            <div class="store-slider-content">
-                            {% for boiler in boiler_list %}
-                                <div class="store-slider-content-item">
-                                    <div class="store-slider-content-item__box">
-                                        <a href="{% url 'product_detail' boiler.category.slug boiler.slug %}">
-                                            <img src="{{ boiler.image.url }}" alt="" class="store-slider-content-item__img" style="width:100%">
-                                        </a>
-                                        <div class="store-slider-content-item__footer">
-                                            <p class="store-slider-content-item__price product_price">{{ boiler.price }}</p>
-                                            <a href="{% url 'product_detail' boiler.category.slug boiler.slug %}" class="store-slider-content-item__title-link">
-                                                <p class="store-slider-content-item__title ">{{boiler.title}}</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="reccomendation-slide left-side-slider">
+                    <h4 class="left-side-slider__h4">Рекомендуем</h4>
+                    <div class="left-side-sliders" id="top-slider">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                {% for product in new_product_list %}
+                                    <li class="glide__slide">
+                                        <a href="{{ product.get_absolute_url }}" class="card card-block-link mb-3">
+                                            <div class="card-img-block">
+                                                <img src="{{ product.image.url }}"class="card-img-top" alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{product.title }}</h6>
+                                                <p class="card-text">
+                                                    
+                                                    <span class="badge bg-primary product_price">{{ product.price }}</span>
+                                                    <span class="badge bg-light text-dark">{{ product.category }}</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="container-fluid">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>First slide label</h5>
+                                    <p>Some representative placeholder content for the first slide.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Second slide label</h5>
+                                    <p>Some representative placeholder content for the second slide.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Third slide label</h5>
+                                    <p>Some representative placeholder content for the third slide.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="store-box">
+                        <div class="store-box__header">
+                            <h4 class="store-box__h4">Газовые котлы</h2>
+                            <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="store-box__link">Смотреть всё</a>
+                        </div>
+                        <div class="store-box__slider" id="gas_boilers_slider">
+                                <div class="glide__track" data-glide-el="track">
+                                    <ul class="glide__slides">
+                                        {% for product in boiler_list %}
+                                            <li class="glide__slide">
+                                                <a href="{{ product.get_absolute_url }}" class="card card-block-link mb-3">
+                                                    <div class="card-img-block">
+                                                        <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">{{product.title }}</h6>
+                                                        <p class="card-text">
+                                                            <span class="badge bg-primary product_price">{{ product.price }}</span>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+                    {% comment %} <div class="store-banner" style="margin-top: 80px;">
+                        <a href="">
+                            <img src="static/images/banner.jpg" style="width:100%; height: 175px; border-radius: 4px;" alt="">
+                        </a>
+                    </div> {% endcomment %}
+                    <div class="store-box">
+                        <div class="store-box__header">
+                            <h4 class="store-box__h4">Газовые горелки</h2>
+                            <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="store-box__link">Смотреть всё</a>
+                        </div>
+                        <div class="store-box__slider" id="gas_gorel_slider">
+                            <div class="glide__track" data-glide-el="track">
+                                <ul class="glide__slides">
+                                    {% for product in boiler_list %}
+                                        <li class="glide__slide">
+                                            <a href="{{ product.get_absolute_url }}" class="card card-block-link mb-3">
+                                                <div class="card-img-block">
+                                                    <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h6 class="card-title">{{product.title }}</h6>
+                                                    <p class="card-text">
+                                                        <span class="badge bg-primary product_price">{{ product.price }}</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content %}
 
 {% block scripts %}
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 <script>
 
     document.querySelectorAll('.product_price').forEach(function(el) {
@@ -153,12 +182,47 @@
         var first_product_item = new_product_item[0]
         $(first_product_item).addClass('active') 
 
-        $('.store-slider-content').slick({
+        $('.store-box-content').slick({
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 3,
             arrows: true
         });
     })
+</script>
+<script>
+    new Glide('.left-side-sliders',{
+        type: 'slider',
+        startAt: 0,
+        perView: 1,
+        gap: 10,
+        bound: true
+    }).mount()
+
+    new Glide('#top-slider',{
+        type: 'slider',
+        startAt: 0,
+        perView: 1,
+        gap: 10,
+        bound: true
+    }).mount()
+
+    new Glide('.store-box__slider',{
+        type: 'slider',
+        startAt: 0,
+        perView: 4,
+        gap: 10,
+        bound: true
+    }).mount()
+
+    new Glide('#gas_gorel_slider',{
+        type: 'slider',
+        startAt: 0,
+        perView: 4,
+        gap: 10,
+        bound: true
+    }).mount()
+
+
 </script>
 {% endblock scripts %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 from io import BytesIO
 from django.core.files import File
 from PIL import Image
@@ -16,7 +17,7 @@ class Category(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return '/%s/' % (self.slug)
+        return reverse('category_detail', kwargs={'slug': self.slug})
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
@@ -36,7 +37,7 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return '/%s/%s/' % (self.category.slug, self.slug)
+        return reverse("product_detail", kwargs={"category_slug": self.category.slug, 'slug': self.slug})
     
 
 class ProductImage(models.Model):

@@ -31,6 +31,63 @@ footer {
           flex: 0 0 auto;
 }
 
+.cart-btn {
+  position: relative;
+}
+
+.cart-btn-counter {
+  position: absolute !important;
+  top: -6px !important;
+  right: -6px;
+}
+
+.carousel-inner {
+  border-radius: 0.25rem;
+}
+
+.card {
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+}
+
+.card-block-link {
+  text-decoration: none;
+  color: #212529;
+}
+
+.card-block-link:hover {
+  color: blue;
+}
+
+.card-img-block {
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 10;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.card:hover > .card-img-block > .card-img-top {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.header-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0px 0px 5px 5px;
+}
+
+.nav-btn {
+  margin-left: 8px;
+}
+
+.lh-1_5 {
+  line-height: 1.5;
+}
+
 .search-input {
   padding: 10px 15px;
   border-radius: 4px;
@@ -65,11 +122,13 @@ footer {
 
 .header-menu {
   margin-top: 30px;
+  border-radius: 4px;
   background: #0063d1 !important;
 }
 
 .header-menu__navbar {
-  font-size: 18px;
+  font-size: 16px;
+  padding: 0px 20px;
   text-transform: uppercase;
 }
 
@@ -158,9 +217,9 @@ footer {
 }
 
 .left-side-slider__h4 {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #ccc;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .left-side-slider__content {
@@ -182,41 +241,7 @@ footer {
   display: block;
 }
 
-.header-top__nav-cart {
-  position: relative;
-}
-
-.cart-items {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 5px;
-  width: 20px;
-  border-radius: 100px;
-  height: 20px;
-  background: #0d6efd;
-  right: -8px;
-  top: -6px;
-}
-
-.cart-items__span {
-  top: 0;
-  font-size: 13px;
-  color: #fff;
-  margin: 0 auto;
-  left: 7px;
-}
-
-.store-slider__header {
+.store-box__header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -229,7 +254,7 @@ footer {
   margin-bottom: 30px;
 }
 
-.store-slider-content-item {
+.store-box-content-item {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 10px;
@@ -238,40 +263,40 @@ footer {
   transition: all 0.5s;
 }
 
-.store-slider-content-item:hover {
+.store-box-content-item:hover {
   border: 1px solid #e1e1e1;
   border-radius: 4px;
 }
 
-.store-slider-content-item__box {
+.store-box-content-item__box {
   margin: 0 auto;
 }
 
-.store-slider-content-item__img {
+.store-box-content-item__img {
   width: 100%;
   margin-bottom: 18px;
 }
 
-.store-slider-content-item__price {
+.store-box-content-item__price {
   text-align: center;
   font-weight: bold;
   color: #0063d1;
 }
 
-.store-slider-content-item__title {
+.store-box-content-item__title {
   text-align: center;
 }
 
-.store-slider-content-item__title-link {
+.store-box-content-item__title-link {
   text-decoration: none;
   color: #777;
 }
 
-.store-slider-content-item__title-link:hover {
+.store-box-content-item__title-link:hover {
   text-decoration: underline;
 }
 
-.store-slider-content > .slick-arrow {
+.store-box-content > .slick-arrow {
   opacity: 0;
   position: absolute;
   border: none;
@@ -280,44 +305,32 @@ footer {
   top: 30%;
 }
 
-.store-slider-content > .slick-arrow:first-child {
+.store-box-content > .slick-arrow:first-child {
   left: 0;
   font-size: 0;
 }
 
-.store-slider-content > .slick-arrow:first-child:before {
+.store-box-content > .slick-arrow:first-child:before {
   content: '<';
   font-size: initial;
 }
 
-.store-slider-content > .slick-arrow:last-child {
+.store-box-content > .slick-arrow:last-child {
   right: 0;
   font-size: 0;
 }
 
-.store-slider-content > .slick-arrow:last-child:before {
+.store-box-content > .slick-arrow:last-child:before {
   content: '>';
   font-size: initial;
 }
 
-.store-slider-content:hover > .slick-arrow {
+.store-box-content:hover > .slick-arrow {
   opacity: 100;
 }
 
 .header-top-mobile {
   display: none;
-}
-
-@media screen and (max-width: 991px) {
-  .header-top-desktop {
-    display: none;
-  }
-  .header-top-mobile {
-    display: block;
-  }
-  .header-top__search-input {
-    margin-top: 15px;
-  }
 }
 
 .footer__top {

@@ -1,124 +1,85 @@
 {% load static %}
 
-<div class="container">
-    <div class="header-top-desktop">
-        <div class="row header-top align-items-center">
-            <div class="col-lg-3">
-                <div class="header-top__col">
-                    <a href="{% url 'index' %}">
-                        <img src="{% static 'images/klimat7-logo.png' %}" alt="Климат7 логотип">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-lg-9 header-top__col">
-                        <form method="get" action="{% url 'search' %}">
-                            <div class="header-top__search-input input-group">
-                                <input type="text" class="form-control search-input" placeholder="Поиск" name="query"">
-                                <button class="btn btn-primary search-input__btn" type="submit">Найти</button>
+<div class="header-desktop">
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-desktop">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 d-flex align-items-center">
+                        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/klimat7-logo.png' %}" alt="klimat7 logo"></a>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-5 col-sm-12">
+                        <form method="get" action="{% url 'search' %}" class="d-flex align-items-center">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="query" placeholder="Я ищу..." aria-describedby="button-addon2">
+                                <button type="submit" class="btn btn-primary" type="button" id="button-addon2">
+                                    <span class="material-icons lh-1_5">
+                                        search
+                                    </span>
+                                </button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-3 header-top__col">
-                        <div class="header-top__nav">
-                            <div class="header-top__nav-cart header-top__nav-item">
-                                <a href="{% url 'cart' %}">
-                                    <img src="{% static 'images/shopping-cart.svg' %}" width="25px" alt="">
-                                    <div class="cart-items">
-                                        <span class="cart-items__span">{{ cart.get_total_length }}</span>
-                                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 d-flex justify-content-end">
+                        <div class="nav-buttons d-flex">
+                            {% if request.user.is_authenticated %}
+                            <div class="input-group">
+                                <a href="" class="btn btn-primary d-flex align-items-center">{{ request.user }}</a>
+                                <a href="{% url 'logout' %}" class="btn btn-primary nav-btn ">
+                                    <span class="material-icons lh-1_5">
+                                        logout
+                                    </span>
                                 </a>
                             </div>
-                            {% if request.user.is_authenticated %}
-                                <div class="header-top__nav-user header-top__nav-item">
-                                    <!-- Example split danger button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-primary">{{request.user}}</button>
-                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="visually-hidden">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{% url 'logout' %}">Выход</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             {% else %}
-                                <div class="header-top__nav-login header-top__nav-item">
-                                    <a href="{% url 'login-signup' %}">
-                                        <img src="{% static 'images/login.svg' %}" width="25px" alt="Вход/регистрация">
-                                    </a>
-                                </dov>
+                            <a href="{% url 'login-signup' %}" class="btn btn-outline-primary nav-btn ">
+                                <span class="material-icons lh-1_5">
+                                    login
+                                </span>
+                            </a>
                             {% endif %}
+                            <a href="{% url 'cart' %}" class="btn btn-outline-primary nav-btn ">
+                                <span class="material-icons lh-1_5">
+                                    favorite
+                                </span>
+                            </a>
+                            <a href="{% url 'cart' %}" class="d-flex cart-btn align-items-center btn btn-outline-primary nav-btn">
+                                <span class="material-icons lh-1_5">
+                                    shopping_cart
+                                </span>
+                                <span class="badge bg-primary cart-btn-counter">{{ cart.get_total_length }}</span>
+                            </a>
+                            <a href="{% url 'cart' %}" class="d-flex align-items-center btn btn-outline-primary nav-btn">
+                                <span class="material-icons">
+                                    menu
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="header-top-mobile">
-        <div class="row header-top align-items-center">
+    <div class="container">
+        <div class="row">
             <div class="col-lg-12">
-                <div class="row align-items-center">
-                    <div class="col-6">
-                        <div class="header-top__col">
-                            <a href="{% url 'index' %}">
-                                <img src="{% static 'images/klimat7-logo.png' %}" alt="Климат7 логотип">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6 header-top__col">
-                        <div class="header-top__nav">
-                            <div class="header-top__nav-cart header-top__nav-item">
-                                <a href="{% url 'cart' %}">
-                                    <img src="{% static 'images/shopping-cart.svg' %}" width="25px" alt="">
-                                    <div class="cart-items">
-                                        <span class="cart-items__span">{{ cart.get_total_length }}</span>
-                                    </div>
-                                </a>
-                            </div>
-                            {% if request.user.is_authenticated %}
-                                <div class="header-top__nav-user header-top__nav-item">
-                                    <!-- Example split danger button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-primary">{{request.user}}</button>
-                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="visually-hidden">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{% url 'logout' %}">Выход</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <div class="header-top__nav-user header-top__nav-item">
-                                    <a href="{% url 'login-signup' %}">
-                                        <img src="{% static 'images/login.svg' %}" width="25px" alt="Вход/регистрация">
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
+                <div class="header-menu">
+                    <nav class="header-menu__navbar">
+                        <ul class="header-menu__navbar-ul">
+                            <li class="header-menu__navbar-li">
+                                <a class="header-menu__navbar-link" aria-current="page" href="{% url 'index' %}">Главная</a>
+                            </li>
+                            <li class="header-menu__navbar-li">
+                                <a class="header-menu__navbar-link" href="{% url 'shop' %}">Магазин</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </div>
-            <div class="col-lg-12">
-                <form method="get" action="{% url 'search' %}">
-                    <div class="header-top__search-input input-group">
-                        <input type="text" class="form-control search-input" placeholder="Поиск" name="query"">
-                        <button class="btn btn-primary search-input__btn" type="submit">Найти</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
 </div>
 
+<div class="header-mobile">
 
-
-
-
-
-{% block scripts %}
-    
-{% endblock scripts %}
+</div>

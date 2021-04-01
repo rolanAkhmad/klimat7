@@ -26,9 +26,9 @@
                             </thead>
                             <tbody>
                                 {% for product in cart %}
-                                    <tr class="align-items-center" id="product-id-{{product.id}}">
+                                    <tr class="align-items-center" id="product-id-{{ product.id }}">
                                         <td><img class="cart-image img-thumbnail" src="{{ product.product.image.url }}" alt="{{product.product.title}}"></td>
-                                        <td>{{product.product.title}}</td>
+                                        <td><a href="{{ product.get_absolute_url }}">{{ product.product.title }}</a></td>
                                         <td>
                                             <div class="input-group">
                                                 <button class="btn btn-primary minus" data-id="{{ product.id }}">-</button>
@@ -110,7 +110,7 @@
                         url: "{% url 'api_cart_get_total_length' %}",
                         success: function(response){
                             var resp = response
-                            $('.cart-items__span').html(resp.total_length)
+                            $('.cart-btn-counter').html(resp.total_length)
                         }
                 })
             }
@@ -143,7 +143,7 @@
                         url: "{% url 'api_cart_get_total_length' %}",
                         success: function(response){
                             var resp = response
-                            $('.cart-items__span').html(resp.total_length)
+                            $('.cart-btn-counter').html(resp.total_length)
                         }
                     })
                 }
@@ -174,7 +174,7 @@
                     url: "{% url 'api_cart_get_total_length' %}",
                     success: function(response){
                         var resp = response
-                        $('.cart-items__span').html(resp.total_length)
+                        $('.cart-btn-counter').html(resp.total_length)
                         showPrice()
                     }
                 })

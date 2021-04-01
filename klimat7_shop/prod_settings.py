@@ -5,9 +5,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = '6c!7n$rihvvn07!f1fcxssd0j=d6@5&6922l)whafa44sdfgt-0&m3)2ck%_d(q'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '78.40.109.163', 'klimat7-shop.kz']
 
 DATABASES = {
     'default': {

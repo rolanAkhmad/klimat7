@@ -130,7 +130,7 @@
                     url: "{% url 'api_cart_get_total_length' %}",
                     success: function(response){
                         var resp = response
-                        $('.cart-items__span').html(resp.total_length)
+                        $('.cart-btn-counter').html(resp.total_length)
                     }
                 })
             }
