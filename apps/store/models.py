@@ -29,6 +29,8 @@ class Product(models.Model):
     is_featured = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to="media/uploads/", blank=True, null=True)
+    in_stock = models.BooleanField(verbose_name="В наличии", default=True)
+    manufacturer = models.CharField(verbose_name="Производитель", max_length=100, blank=True, null=True)
 
     class Meta:
         ordering = ('-date_added', )

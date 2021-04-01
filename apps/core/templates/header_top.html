@@ -1,81 +1,88 @@
 {% load static %}
 
-<div class="header-desktop">
-    <div class="header-top">
-        <div class="container">
-            <div class="header-top-desktop">
-                <div class="row align-items-center">
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 d-flex align-items-center">
-                        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/klimat7-logo.png' %}" alt="klimat7 logo"></a>
+<div class="header">
+    <div class="container">
+        <div class="header-top-desktop">
+            <div class="header-logo">
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/klimat7-logo.svg' %}" heigth="100" width="130" alt="klimat7 logo"></a>
+            </div>
+            <div class="header-search">
+                <form method="get" action="{% url 'search' %}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="query" placeholder="Я ищу...">
+                        <button type="submit" class="btn btn-primary" type="button">
+                            <span class="material-icons lh-1_5">
+                                search
+                            </span>
+                        </button>
                     </div>
-                    <div class="col-xl-7 col-lg-7 col-md-5 col-sm-12">
-                        <form method="get" action="{% url 'search' %}" class="d-flex align-items-center">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="query" placeholder="Я ищу..." aria-describedby="button-addon2">
-                                <button type="submit" class="btn btn-primary" type="button" id="button-addon2">
-                                    <span class="material-icons lh-1_5">
-                                        search
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 d-flex justify-content-end">
-                        <div class="nav-buttons d-flex">
-                            {% if request.user.is_authenticated %}
-                            <div class="input-group">
-                                <a href="" class="btn btn-primary d-flex align-items-center">{{ request.user }}</a>
-                                <a href="{% url 'logout' %}" class="btn btn-primary nav-btn ">
-                                    <span class="material-icons lh-1_5">
-                                        logout
-                                    </span>
-                                </a>
-                            </div>
-                            {% else %}
-                            <a href="{% url 'login-signup' %}" class="btn btn-outline-primary nav-btn ">
+                </form>
+            </div>
+            <div class="header-buttons">
+                <!-- login/register -->
+                <div class="header-buttons-group header-buttons-group_login-register">
+                    {% if request.user.is_authenticated %}
+                        <div class="input-group">
+                            <a href="" class="btn btn-primary header-buttons-group__btn">{{ request.user }}</a>
+                            <a href="{% url 'logout' %}" class="btn btn-primary header-buttons-group__btn">
                                 <span class="material-icons lh-1_5">
-                                    login
-                                </span>
-                            </a>
-                            {% endif %}
-                            <a href="{% url 'cart' %}" class="btn btn-outline-primary nav-btn ">
-                                <span class="material-icons lh-1_5">
-                                    favorite
-                                </span>
-                            </a>
-                            <a href="{% url 'cart' %}" class="d-flex cart-btn align-items-center btn btn-outline-primary nav-btn">
-                                <span class="material-icons lh-1_5">
-                                    shopping_cart
-                                </span>
-                                <span class="badge bg-primary cart-btn-counter">{{ cart.get_total_length }}</span>
-                            </a>
-                            <a href="{% url 'cart' %}" class="d-flex align-items-center btn btn-outline-primary nav-btn">
-                                <span class="material-icons">
-                                    menu
+                                    logout
                                 </span>
                             </a>
                         </div>
-                    </div>
+                    {% else %}
+                        <a href="{% url 'login-signup' %}" class="btn btn-outline-primary header-buttons-group__btn">
+                            <span class="material-icons lh-1_5">
+                                login
+                            </span>
+                        </a>
+                    {% endif %}
+                </div>
+                <!-- search -->
+                <div class="header-buttons-group header-buttons-group_search">
+                    <a href="{% url 'cart' %}" class="btn btn-outline-primary header-buttons-group__btn">
+                        <span class="material-icons lh-1_5">
+                            search
+                        </span>
+                    </a>
+                </div>
+                <!-- cart/wishlist -->
+                <div class="header-buttons-group header-buttons-group_cart-wish">
+                    <a href="{% url 'cart' %}" class="btn btn-outline-primary header-buttons-group__btn">
+                        <span class="material-icons lh-1_5">
+                            favorite
+                        </span>
+                    </a>
+                    <a href="{% url 'cart' %}" class="btn btn-outline-primary cart-btn header-buttons-group__btn">
+                        <span class="material-icons lh-1_5">
+                            shopping_cart
+                        </span>
+                        <span class="badge bg-primary cart-btn-counter">{{ cart.get_total_length }}</span>
+                    </a>
+                </div>
+                <!-- menu -->
+                <div class="header-buttons-group header-buttons-group_menu">
+                    <a href="{% url 'cart' %}" class="btn btn-outline-primary header-buttons-group__btn">
+                        <span class="material-icons lh-1_5">
+                            menu
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="header-menu">
-                    <nav class="header-menu__navbar">
-                        <ul class="header-menu__navbar-ul">
-                            <li class="header-menu__navbar-li">
-                                <a class="header-menu__navbar-link" aria-current="page" href="{% url 'index' %}">Главная</a>
-                            </li>
-                            <li class="header-menu__navbar-li">
-                                <a class="header-menu__navbar-link" href="{% url 'shop' %}">Магазин</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+        <div class="header-menu">
+            <nav class="header-menu__navbar">
+                <ul class="header-menu__navbar-ul">
+                    <li class="header-menu__navbar-li">
+                        <a class="header-menu__navbar-link" aria-current="page" href="{% url 'index' %}">Главная</a>
+                    </li>
+                    <li class="header-menu__navbar-li">
+                        <a class="header-menu__navbar-link" href="{% url 'shop' %}">Магазин</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
