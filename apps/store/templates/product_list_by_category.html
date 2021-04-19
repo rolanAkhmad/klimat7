@@ -23,7 +23,13 @@
                 <div class="store-product-area">
                     <div class="row">
                         <div class="col-lg-12">
-                        {{category.title}}
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{category.title}}</li>
+                                </ol>
+                            </nav>
+                            
                         </div>
                         {% for product in object_list %}
                         <div class="col-lg-4">
@@ -55,7 +61,7 @@
                     <ul class="pagination justify-content-center">
                         {% if page_obj.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ page.previous_page_number }}"" aria-label="Previous">
+                                <a class="page-link" href="?page={{ page.previous_page_number }}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
@@ -89,7 +95,6 @@
                     </ul>
                 </nav>
             </div>
-            
         </div>
     </div>
 {% endblock content %}
@@ -102,5 +107,4 @@
     var result = num.toLocaleString();
     var num = $('.product_price').html(result + ' &#8376')
 </script>
-
 {% endblock scripts %}
