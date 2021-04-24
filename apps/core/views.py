@@ -18,8 +18,6 @@ def frontpage(request):
 
     burners_list = gas_burners | binary_burners | liquid_fuel_burners
 
-    print(burners_list)
-
     context = {
         'new_product_list': new_product_list,
         'boiler_list': boiler_list,
