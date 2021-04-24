@@ -69,13 +69,15 @@
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% endif %}
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
                                                 <div class="card-info-block">
-                                                    <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
+                                                    <p class="card-text card-manufacturer">Производитель: {{product.manufacturer}}</p>
+                                                    <p class="card-text card-category">Категория: {{ product.category }}</p>
                                                 </div>
                                                 <div class="card-footer-block">
                                                     <p class="card-price product_price">{{product.price}}</p>
@@ -116,7 +118,9 @@
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% endif %}
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
@@ -161,7 +165,9 @@
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% endif %}
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
@@ -193,22 +199,24 @@
                 <div class="store-box">
                     <div class="store-box__header">
                         <h4 class="store-box__h4">Газовые горелки</h2>
-                        <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="store-box__link">Смотреть всё</a>
+                        <a href="" class="store-box__link">Смотреть всё</a>
                     </div>
                     <div class="store-box__slider" id="gas_gorel_slider">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
-                                {% for product in boiler_list %}
+                                {% for product in burners_list %}
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                {% endif %}
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
                                                 <div class="card-info-block">
                                                     <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
+                                                    <p class="card-text card-category">Категория: {{ product.category }}</p>
                                                 </div>
                                                 <div class="card-footer-block">
                                                     <p class="card-price product_price">{{product.price}}</p>

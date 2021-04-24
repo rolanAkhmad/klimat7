@@ -8,11 +8,22 @@ from apps.store.models import Product, Category
 from .models import *
 
 def frontpage(request):
-    boiler_list = Product.objects.filter(category__slug="gas_boiler")
     new_product_list = Product.objects.order_by('-date_added')
+
+    boiler_list = Product.objects.filter(category__slug="gas_boiler")
+
+    gas_burners = Product.objects.filter(category__slug="gas_burners")
+    binary_burners = Product.objects.filter(category__slug="binary_burners")
+    liquid_fuel_burners = Product.objects.filter(category__slug="liquid_fuel_burners")
+
+    burners_list = gas_burners | binary_burners | liquid_fuel_burners
+
+    print(burners_list)
+
     context = {
-        'new_product_list':new_product_list,
+        'new_product_list': new_product_list,
         'boiler_list': boiler_list,
+        'burners_list': burners_list
     }
     
     return render(request, 'index.html', context)
@@ -33,3 +44,4 @@ def ProductListByCategory(request, slug):
     product_list = Product.objects.filter(category__slug=slug)
     return render(request, 'shop/product_list.html', context={'object_list':product_list})
 
+ 

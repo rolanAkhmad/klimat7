@@ -41,6 +41,12 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("product_detail", kwargs={"category_slug": self.category.slug, 'slug': self.slug})
 
+    def get_main_image(self):
+        try:
+            return self.image
+        except:
+            return ''
+
     
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
