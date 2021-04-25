@@ -7,17 +7,13 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                {% for category in menu_categories %}
-                    <a href="{{ category.get_absolute_url }}" class="category-menu__link">
-                        <ul class="category-menu__ul">
-                            {% for category in menu_categories %}
-                                <a href="{{ category.get_absolute_url }}" class="category-menu__link">
-                                    <li class="category-menu__li">{{ category.title }}</li>
-                                </a>
-                            {% endfor %}
-                        </ul>
-                    </a>
-                {% endfor %}
+                <ul class="category-menu__ul">
+                    {% for category in menu_categories %}
+                        <a href="{{ category.get_absolute_url }}" class="category-menu__link">
+                            <li class="category-menu__li">{{ category.title }}</li>
+                        </a>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

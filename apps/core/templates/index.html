@@ -4,49 +4,21 @@
 
 {% block content %}
     <div class="container">
-        
         <div class="row">
-            <div class="col-lg-9">
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <div class="input-group">
-                                    <button class="btn btn-primary">Получить скидку</button>
-                                    <div class="input-group-text" id="btnGroupAddon">@</div>
+            <div class="col-lg-12">
+                <div class="main-slider" id="main_slider">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide">
+                                <div class="main-slider-slide">
+                                    <img class="main-slider-slide__banner"src="{% static 'images/banner.jpg' %}" alt="">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Some representative placeholder content for the second slide.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="static/images/banner.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Some representative placeholder content for the third slide.</p>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="glide__slide">
+                                <img src="{% static 'images/banner1.jpg' %}" alt="">
+                            </li>
+                        </ul>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -61,7 +33,6 @@
                         </div>
                         <h4 class="slider-sm-header__title">Новое поступление</h4>
                     </div>
-                    
                     <div class="left-side-sliders" id="new-arriwal-slider">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
@@ -69,9 +40,7 @@
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                {% if product.image %}
-                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
-                                                {% endif %}
+                                                <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
@@ -118,9 +87,7 @@
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                {% if product.image %}
-                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
-                                                {% endif %}
+                                               <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
@@ -154,20 +121,37 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="store-box">
-                    <div class="store-box__header">
-                        <h4 class="store-box__h4">Газовые котлы</h2>
-                        <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="store-box__link">Смотреть всё</a>
-                    </div>
-                    <div class="store-box__slider" id="gas_boilers_slider">
+                    <div class="card-slider" id="gas_boilers_slider">
+                        <div class="slider-header">
+                            <h4 class="slider-header__h4">Газовые котлы</h2>
+                            <div class="slider-header-box">
+                                <div data-glide-el="controls[nav]" class="slider-control-items">
+                                    {% for product in boiler_list %}
+                                        <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
+                                    {% endfor %}
+                                </div>
+                                <div data-glide-el="controls" class="slider-control">
+                                    <button data-glide-dir="<" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_left
+                                        </span>
+                                    </button>
+                                    <button data-glide-dir=">" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_right
+                                        </span>
+                                    </button>
+                                </div>
+                                <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="slider-header__button btn btn-outline-primary">Смотреть всё</a>
+                            </div>
+                        </div>
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
                                 {% for product in boiler_list %}
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                {% if product.image %}
-                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
-                                                {% endif %}
+                                               <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
@@ -197,26 +181,43 @@
                     </div>
                 </div>
                 <div class="store-box">
-                    <div class="store-box__header">
-                        <h4 class="store-box__h4">Газовые горелки</h2>
-                        <a href="" class="store-box__link">Смотреть всё</a>
-                    </div>
-                    <div class="store-box__slider" id="gas_gorel_slider">
+                    <div class="card-slider" id="gas_gorel_slider">
+                        <div class="slider-header">
+                            <h4 class="slider-header__h4">Газовые горелки</h2>
+                            <div class="slider-header-box">
+                                <div data-glide-el="controls[nav]" class="slider-control-items">
+                                    {% for product in burners_list %}
+                                        <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
+                                    {% endfor %}
+                                </div>
+                                <div data-glide-el="controls" class="slider-control">
+                                    <button data-glide-dir="<" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_left
+                                        </span>
+                                    </button>
+                                    <button data-glide-dir=">" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_right
+                                        </span>
+                                    </button>
+                                </div>
+                                <a href="{% url 'category_detail' burners_list.0.category.slug %}" class="store-box__link btn btn-outline-primary">Смотреть всё</a>
+                            </div>
+                        </div>
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
                                 {% for product in burners_list %}
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                                {% if product.image %}
-                                                    <img src="{{ product.image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
-                                                {% endif %}
+                                               <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
                                                 <div class="card-info-block">
                                                     <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: {{ product.category }}</p>
+                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
                                                 </div>
                                                 <div class="card-footer-block">
                                                     <p class="card-price product_price">{{product.price}}</p>

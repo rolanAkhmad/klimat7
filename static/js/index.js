@@ -1,3 +1,11 @@
+new Glide('.main-slider',{
+    type: 'slider',
+    startAt: 0,
+    perView: 1,
+    gap: 20,
+    bound: true,
+}).mount()
+
 new Glide('.left-side-sliders',{
     type: 'slider',
     startAt: 0,
@@ -5,7 +13,7 @@ new Glide('.left-side-sliders',{
     gap: 20,
     bound: true,
     breakpoints: {
-        600: { perView: 2 },
+        600: { perView: 1 },
         1200: { perView: 1 }
     },
 }).mount()
@@ -17,18 +25,18 @@ new Glide('#top-slider',{
     gap: 20,
     bound: true,
     breakpoints: {
-        600: { perView: 2 },
+        600: { perView: 1 },
         1200: { perView: 1 }
     },
 }).mount()
 
-new Glide('.store-box__slider',{
+new Glide('#gas_boilers_slider',{
     type: 'slider',
     startAt: 0,
     perView: 4,
     gap: 20,
     breakpoints: {
-        600: { perView: 2 },
+        600: { perView: 1 },
         1200: { perView: 3 }
     },
     bound: true,
@@ -40,7 +48,7 @@ new Glide('#gas_gorel_slider',{
     perView: 4,
     gap: 20,
     breakpoints: {
-        600: { perView: 2 },
+        600: { perView: 1 },
         1200: { perView: 3 }
     },
     bound: true

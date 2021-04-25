@@ -3,7 +3,6 @@
 @import "index"
 @import "product_list"
 @import "product_detail"
-@import "login_signup"
 @import "cart"
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600&display=swap');
@@ -52,6 +51,10 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
     border: 1px solid $gray
     border-radius: 4px
 
+.main-slider
+    &-slide
+        &__banner
+            width: 100%
 
 .slider-product-card
     & > .card-img-block
@@ -64,12 +67,16 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
             width: 200px
             height: 200px
     .card-title
+        white-space: nowrap; 
+        overflow: hidden;
         margin-bottom: 0px
+        text-overflow: ellipsis
     .card-price
         font-size: 18px
         margin-bottom: 0px
     .card-info-block
         margin: 20px 0px
+        font-size: 15px
         & > .card-text
             margin-bottom: 4px
             color: $gray2
@@ -128,6 +135,110 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
             margin-bottom: 20px
         & > .footer__text
             margin-bottom: 20px
+
+
+.slider-header
+    border: 1px solid $gray
+    padding: 15px
+    margin-bottom: 20px
+    &__h4
+        margin-bottom: 0
+    display: flex
+    align-items: center
+    justify-content: space-between
+    &-box
+        display: flex
+        align-items: center
+        justify-content: space-between
+    &__button
+        margin-left: 8px
+    .slider-control
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-right: 8px
+        padding-right: 4px
+        padding-left: 4px
+        border-right: 1px solid $gray
+        border-left: 1px solid $gray
+        &-items
+            display: flex
+            align-items: center
+            justify-content: space-between
+            margin-right: 8px
+            &__button
+                padding: 5px
+                margin-right: 4px
+                border-radius: 100px
+        &__button
+            border: none
+            background: none
+            display: flex
+            padding: 5px
+
+    
+
+
+//    login-signup страница и связанные с ней элементы
+        
+
+// .signup-form
+//     position: relative
+//     display: flex
+//     justify-content: space-between
+//     flex-direction: column
+//     margin-top: 60px
+//     border: 1px solid $gray
+//     padding: 15px 15px
+//     border-radius: 4px
+//     & > form
+//         display: flex
+//         justify-content: space-between
+//         flex-direction: column
+
+.login-form
+    position: relative
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    border: 1px solid $gray
+    border-radius: 4px
+    padding: 0px
+    &-header
+        border-bottom: 1px solid $gray
+        padding: 14px 0px
+        &__title
+            text-align: center
+            margin-bottom: 0px
+            font-size: 20px
+            color: $gray2
+    &-item
+        margin-top: 0px
+        border-bottom: 1px solid $gray
+    &__input
+        width: 100%
+        border: 0px
+        border-radius: 0px
+        margin-top: 0px
+        padding: 14px 25px
+    &-footer
+        display: flex
+        flex-direction: column
+        padding: 20px 
+    &__button
+        border-radius: 0px
+        margin-bottom: 8px
+        border-radius: 4px
+
+    & > form
+        display: flex
+        justify-content: space-between
+        flex-direction: column
+    
+.form-button
+    padding: 10px 0px
+
+
 
 
 @media screen and (max-width:1200px)
