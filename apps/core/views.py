@@ -10,13 +10,15 @@ from .models import *
 def frontpage(request):
     new_product_list = Product.objects.order_by('-date_added')
 
-    boiler_list = Product.objects.filter(category__slug="gas_boiler")
+    boiler_list = Product.objects.filter(category__slug="gas_boiler")[:10]
 
     gas_burners = Product.objects.filter(category__slug="gas_burners")
     binary_burners = Product.objects.filter(category__slug="binary_burners")
     liquid_fuel_burners = Product.objects.filter(category__slug="liquid_fuel_burners")
 
     burners_list = gas_burners | binary_burners | liquid_fuel_burners
+
+    burners_list = burners_list[:10]
 
     context = {
         'new_product_list': new_product_list,

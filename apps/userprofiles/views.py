@@ -33,9 +33,17 @@ def login_signup(request):
         signup_form = SignUpForm()
 
     boiler_list = Product.objects.filter(category__slug="gas_boiler")
+
+    gas_burners = Product.objects.filter(category__slug="gas_burners")
+    binary_burners = Product.objects.filter(category__slug="binary_burners")
+    liquid_fuel_burners = Product.objects.filter(category__slug="liquid_fuel_burners")
+
+    burners_list = gas_burners | binary_burners | liquid_fuel_burners
+
     context = {
         'signup_form': signup_form,
-        'boiler_list': boiler_list
+        'boiler_list': boiler_list,
+        'burners_list': burners_list
     }
 
     return render(request, 'login-signup.html', context)

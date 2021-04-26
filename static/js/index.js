@@ -1,4 +1,4 @@
-new Glide('.main-slider',{
+new Glide('#banner_slider',{
     type: 'slider',
     startAt: 0,
     perView: 1,
@@ -6,7 +6,7 @@ new Glide('.main-slider',{
     bound: true,
 }).mount()
 
-new Glide('.left-side-sliders',{
+new Glide('#new-arriwal-slider',{
     type: 'slider',
     startAt: 0,
     perView: 2,
@@ -30,13 +30,16 @@ new Glide('#top-slider',{
     },
 }).mount()
 
+
+
 new Glide('#gas_boilers_slider',{
     type: 'slider',
     startAt: 0,
     perView: 4,
     gap: 20,
     breakpoints: {
-        600: { perView: 1 },
+        768: { perView: 1 },
+        992: { perView:2},
         1200: { perView: 3 }
     },
     bound: true,
@@ -48,7 +51,8 @@ new Glide('#gas_gorel_slider',{
     perView: 4,
     gap: 20,
     breakpoints: {
-        600: { perView: 1 },
+        768: { perView: 1 },
+        992: { perView:2},
         1200: { perView: 3 }
     },
     bound: true

@@ -6,16 +6,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="main-slider" id="main_slider">
+                <div class="banner-slider" id="banner_slider">
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li class="glide__slide">
-                                <div class="main-slider-slide">
-                                    <img class="main-slider-slide__banner"src="{% static 'images/banner.jpg' %}" alt="">
+                                <div class="banner-slider-slide">
+                                    <img height="360" class="banner-slider-slide__banner"src="{% static 'images/banner.jpg' %}" alt="">
                                 </div>
                             </li>
                             <li class="glide__slide">
-                                <img src="{% static 'images/banner1.jpg' %}" alt="">
+                                <img height="360" src="{% static 'images/banner1.jpg' %}" alt="">
                             </li>
                         </ul>
                     </div>
@@ -24,16 +24,33 @@
         </div>
         <div class="row main-row">
             <div class="col-lg-6">
-                <div class="new-arrival-slide left-side-slider">
-                    <div class="slider-sm-header">
-                        <div class="slider-sm-header__icon-box bg-primary text-white">
-                            <div class="slider-sm-header__icon-text">
-                                NEW
+                <div class="store-box">
+                    <div class="card-slider" id="new-arriwal-slider">
+                        <div class="slider-header">
+                            <div class="slider-header-box">
+                                <div class="slider-sm-header__icon-box bg-primary text-white">
+                                    <div class="slider-sm-header__icon-text">
+                                        NEW
+                                    </div>
+                                </div>
+                                <h4 class="slider-sm-header__title">Новое поступление</h4>
+                            </div>
+                            <div class="slider-header-box">
+                                <div data-glide-el="controls" class="slider-control">
+                                    <button data-glide-dir="<" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_left
+                                        </span>
+                                    </button>
+                                    <button data-glide-dir=">" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_right
+                                        </span>
+                                    </button>
+                                </div>
+                                <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="slider-header__button btn btn-outline-primary">Смотреть всё</a>
                             </div>
                         </div>
-                        <h4 class="slider-sm-header__title">Новое поступление</h4>
-                    </div>
-                    <div class="left-side-sliders" id="new-arriwal-slider">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
                                 {% for product in new_product_list %}
@@ -71,23 +88,40 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="reccomendation-slide left-side-slider">
-                     <div class="slider-sm-header">
-                        <div class="slider-sm-header__icon-box bg-danger text-white">
-                            <span class="material-icons-round">
-                                local_fire_department
-                            </span>
+                <div class="store-box">
+                    <div class="card-slider" id="top-slider">
+                        <div class="slider-header">
+                            <div class="slider-header-box">
+                                <div class="slider-sm-header__icon-box bg-danger text-white">
+                                    <span class="material-icons-round">
+                                        local_fire_department
+                                    </span>
+                                </div>
+                                <h4 class="slider-sm-header__title">Рекомендуем</h4>
+                            </div>
+                            <div class="slider-header-box">
+                                <div data-glide-el="controls" class="slider-control">
+                                    <button data-glide-dir="<" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_left
+                                        </span>
+                                    </button>
+                                    <button data-glide-dir=">" class="slider-control__button">
+                                        <span class="material-icons-round">
+                                            chevron_right
+                                        </span>
+                                    </button>
+                                </div>
+                                <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="slider-header__button btn btn-outline-primary">Смотреть всё</a>
+                            </div>
                         </div>
-                        <h4 class="slider-sm-header__title">Рекомендуем</h4>
-                    </div>
-                    <div class="left-side-sliders" id="top-slider">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
                                 {% for product in new_product_list %}
                                     <li class="glide__slide">
                                         <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                             <div class="card-img-block">
-                                               <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                                <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
@@ -125,7 +159,7 @@
                         <div class="slider-header">
                             <h4 class="slider-header__h4">Газовые котлы</h2>
                             <div class="slider-header-box">
-                                <div data-glide-el="controls[nav]" class="slider-control-items">
+                                <div data-glide-el="controls[nav]" class="slider-control-items pc-visible">
                                     {% for product in boiler_list %}
                                         <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
                                     {% endfor %}
@@ -185,7 +219,7 @@
                         <div class="slider-header">
                             <h4 class="slider-header__h4">Газовые горелки</h2>
                             <div class="slider-header-box">
-                                <div data-glide-el="controls[nav]" class="slider-control-items">
+                                <div data-glide-el="controls[nav]" class="slider-control-items pc-visible">
                                     {% for product in burners_list %}
                                         <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
                                     {% endfor %}
@@ -248,4 +282,4 @@
 {% block scripts %}
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/product-price.js' %}"></script>
-{% endblock scripts %}
+{% endblock scripts %}~

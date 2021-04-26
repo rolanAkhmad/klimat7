@@ -51,10 +51,13 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
     border: 1px solid $gray
     border-radius: 4px
 
-.main-slider
+.banner-slider
+    border: 1px solid $gray
+    border-radius: 4px
+    height: 360px
     &-slide
         &__banner
-            width: 100%
+            max-width: 100%
 
 .slider-product-card
     & > .card-img-block
@@ -109,6 +112,7 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
         font-size: 18px
     &__icon-box
         width: 60px
+        border-radius: 4px
         display: flex;
         align-items: center;
         justify-content: center;
@@ -122,6 +126,7 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
         display: flex
         justify-content: space-between
         align-items: flex-start
+        flex-wrap: wrap
     &-col
         margin-right: 80px
     &-links
@@ -138,8 +143,7 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
 
 
 .slider-header
-    border: 1px solid $gray
-    padding: 15px
+    padding: 15px 0px
     margin-bottom: 20px
     &__h4
         margin-bottom: 0
@@ -262,39 +266,88 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
                 & > input, button
                     border-radius: 0
 
-@media screen and (max-width:991px)
+@media screen and (max-width:992px)
     .pc-visible
-        display: none
+        display: none !important
     .tablet-visible
         display: block
     .main-row
         display: flex
         flex-direction: column-reverse
-    
-@media screen and (max-width:768px)
     .phone-visible
         display: block
-    .header-buttons
-        border-top: 1px solid rgba(0,0,0,.125)
-        background: white
-        width: 100%
-        padding: 10px 10px
-        box-sizing: border-box
-        z-index: 100
-        position: fixed
-        bottom: 0
-        left: 0
-
-    .header-buttons-group
-        margin-left: 0px
-
+    .header
+        padding: 20px 0px
+        &-top-desktop
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            align-items: center
+            padding: 50px 0px
+            border-bottom: 1px solid #ccc
+        &-buttons
+            display: flex
+            justify-content: space-between
+            &-group
+                display: flex
+                margin-left: 10px
+                align-items: center
+                &__btn
+                    display: flex
+                    align-items: center
+                    margin-left: 5px
+                    line-height: 1.5
+        &-menu
+            display: none !important
+            transition: all 0.1s ease-out 0.1s;
+            height: stretch;
+            overflow-y: auto;
+            width: 100%
+            height: 100%
+            position: fixed
+            z-index: 20
+            box-sizing: border-box
+            border-radius: 0px
+            background-color: #fff !important
+            padding-top: 20px
+            padding-bottom: 71px
+            margin-top: 0px
+            bottom: 0
+            left: 0px
+            flex-direction: column
+            align-items: center
+            justify-content: space-around
+            &__navbar
+                &-ul
+                    border: 1px solid #ccc
+                    width: 100%
+                    padding: 0px
+                    flex-direction: column
+                    margin: 30px 0px
+                &-li
+                    padding-left: 20px
+                    border-bottom: 1px solid #ccc
+                    &:last-child
+                        border-bottom: none
+                &-link
+                    display: block
+                    margin: 0px
+                    padding: 15px 0px
+                    color: rgb(84, 84, 84);
+            &__logo
+                display: flex
+                justify-content: center
+    
+@media screen and (max-width:768px)
     .header-buttons__search-btn
         display: block
 
     .header-buttons__menu-btn
         display: block
 
-@media screen and (max-width:430px)
+@media screen and (max-width:508px)
+    .tablet-visible
+        display: none !important
     .header-buttons-group_login-register
         display: none !important
 

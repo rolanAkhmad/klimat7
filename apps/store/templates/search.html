@@ -30,24 +30,32 @@
                         </div>
 
                         {% for product in products %}
-                        <div class="col-lg-4">
-                            <div class="store-product-area-item">
-                                <div class="store-product-area-item__image-box">
-                                    <a href="{% url 'product_detail' product.category.slug product.slug %}" class="store-product-area-item__image-link">
-                                        <img class="store-product-area-item__image" src="{{ product.image.url }}" alt="{{ product.title }}">
-                                    </a>
-                                    <a href="{% url 'product_detail' product.category.slug product.slug %}" class="btn btn-primary store-product-area-item__button">Подробнее</a>
+                        <div class="col-lg-4 col-md-3 col-sm-2">
+                            <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
+                                <div class="card-img-block">
+                                    <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
                                 </div>
-                                <div class="store-product-area-item__price-box">
-                                    {% if product.old_price %}
-                                    <span class="store-product-area-item__old-price product_price">{{ product.old_price }} ₸</span>
-                                    {% endif %}
-                                    <span class="store-product-area-item__price product_price">{{ product.price }} ₸</span>
-                                </div>
-                                <a href="{% url 'product_detail' product.category.slug product.slug %}" class="store-product-area-item__title">
-                                    Газовый котёл {{ product.title }}
-                                </a>
-                            </div>
+                                <div class="card-body">
+                                    <h6 class="card-title">{{product.title }}</h6>
+                                    <div class="card-info-block">
+                                        <p class="card-text card-manufacturer">Производитель: {{product.manufacturer}}</p>
+                                        <p class="card-text card-category">Категория: {{ product.category }}</p>
+                                    </div>
+                                    <div class="card-footer-block">
+                                        <p class="card-price product_price">{{product.price}}</p>
+                                        <div class="card-buttons">
+                                            <button class="btn btn-outline-danger card-buttons__favorite-btn">
+                                                <span class="material-icons-round">
+                                                    favorite_border
+                                                </span>
+                                            </button>
+                                            <button class="btn btn-outline-primary">
+                                                Добавить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>                                            
+                            </a>
                         </div>
                         {% endfor %}
                         
