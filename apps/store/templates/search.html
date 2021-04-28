@@ -30,7 +30,7 @@
                         </div>
 
                         {% for product in products %}
-                        <div class="col-lg-4 col-md-3 col-sm-2">
+                        <div class="col-lg-4 col-md-3 col-sm-2 mb-4">
                             <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                 <div class="card-img-block">
                                     <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">

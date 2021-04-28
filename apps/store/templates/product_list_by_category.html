@@ -13,6 +13,17 @@
 
 {% block content %}
     <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'shop' %}">Магазин</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{category.title}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <div class="row flex-column-reverse flex-lg-row">
 
             <div class="col-lg-3">
@@ -22,17 +33,8 @@
             <div class="col-lg-9">
                 <div class="store-product-area">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{category.title}}</li>
-                                </ol>
-                            </nav>
-                            
-                        </div>
                         {% for product in object_list %}
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 mb-4">
                             <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
                                 <div class="card-img-block">
                                     <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
@@ -60,11 +62,8 @@
                             </a>
                         </div>
                         {% endfor %}
-                        
                     </div>
-                    
                 </div>
-
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         {% if page_obj.has_previous %}

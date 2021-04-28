@@ -828,6 +828,12 @@ p, li, button, h1, h2, h3, h4, h5, h6, a, input {
   padding: 10px 0px;
 }
 
+.company-info {
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+}
+
 @media screen and (max-width: 1200px) {
   .header-about {
     -webkit-box-flex: 0;
@@ -927,7 +933,7 @@ p, li, button, h1, h2, h3, h4, h5, h6, a, input {
     line-height: 1.5;
   }
   .header-menu {
-    display: none !important;
+    display: none;
     -webkit-transition: all 0.1s ease-out 0.1s;
     transition: all 0.1s ease-out 0.1s;
     height: -webkit-fill-available;
@@ -1005,6 +1011,12 @@ p, li, button, h1, h2, h3, h4, h5, h6, a, input {
   }
   .header-buttons-group_login-register {
     display: none !important;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .header-buttons-group_cart-wish {
+    display: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

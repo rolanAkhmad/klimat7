@@ -22,6 +22,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="store-box">
+                    <div class="company-info">
+                        <h4 class="company-info__h4 mb-3">Компания «Климат-7»</h4>
+                        <p class="company-info__p">
+                            Уже более 15 лет выполняет монтаж систем отопления под ключ, а также их ремонт и модернизацию. Огромнейший опыт работы наших сотрудников позволяет решить ту или иную задачу в самые короткие сроки. Получив немало положительных отзывов, компания «Климат-7» зарекомендовала себя как надежный, добросовестный поставщик услуг!     
+                        </p>
+                        <a href="" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row main-row">
             <div class="col-lg-6">
                 <div class="store-box">
@@ -33,10 +46,10 @@
                                         NEW
                                     </div>
                                 </div>
-                                <h4 class="slider-sm-header__title">Новое поступление</h4>
+                                <h4 class="slider-sm-header__title">Новинка</h4>
                             </div>
                             <div class="slider-header-box">
-                                <div data-glide-el="controls" class="slider-control">
+                                <div data-glide-el="controls" class="slider-control pc-visible">
                                     <button data-glide-dir="<" class="slider-control__button">
                                         <span class="material-icons-round">
                                             chevron_left
@@ -100,7 +113,7 @@
                                 <h4 class="slider-sm-header__title">Рекомендуем</h4>
                             </div>
                             <div class="slider-header-box">
-                                <div data-glide-el="controls" class="slider-control">
+                                <div data-glide-el="controls" class="slider-control pc-visible">
                                     <button data-glide-dir="<" class="slider-control__button">
                                         <span class="material-icons-round">
                                             chevron_left
@@ -126,8 +139,8 @@
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
                                                 <div class="card-info-block">
-                                                    <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
+                                                    <p class="card-text card-manufacturer">Производитель: {{product.manufacturer}}</p>
+                                                    <p class="card-text card-category">Категория: {{product.category}}</p>
                                                 </div>
                                                 <div class="card-footer-block">
                                                     <p class="card-price product_price">{{product.price}}</p>
@@ -164,7 +177,7 @@
                                         <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
                                     {% endfor %}
                                 </div>
-                                <div data-glide-el="controls" class="slider-control">
+                                <div data-glide-el="controls" class="slider-control pc-visible">
                                     <button data-glide-dir="<" class="slider-control__button">
                                         <span class="material-icons-round">
                                             chevron_left
@@ -190,8 +203,8 @@
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
                                                 <div class="card-info-block">
-                                                    <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
+                                                    <p class="card-text card-manufacturer">Производитель: {{product.manufacturer}}</p>
+                                                    <p class="card-text card-category">Категория: {{product.category}}</p>
                                                 </div>
                                                 <div class="card-footer-block">
                                                     <p class="card-price product_price">{{product.price}}</p>
@@ -215,6 +228,15 @@
                     </div>
                 </div>
                 <div class="store-box">
+                    <div class="company-info">
+                        <h4 class="company-info__h4 mb-3">Услуги монтажа</h4>
+                        <p class="company-info__p">
+                            Мы применяем комплексный подход к решению любой проблемы и гарантируем оперативность в подготовке и проведении работ любой сложности, обязательное соблюдение сроков выполнения. Наша компания готова создать Вам комфортные условия для работы, взяв на себя решение всех вопросов по технической эксплуатации зданий и сооружений на высоком профессиональном уровне.
+                        </p>
+                        <a href="" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+                <div class="store-box">
                     <div class="card-slider" id="gas_gorel_slider">
                         <div class="slider-header">
                             <h4 class="slider-header__h4">Газовые горелки</h2>
@@ -224,7 +246,7 @@
                                         <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
                                     {% endfor %}
                                 </div>
-                                <div data-glide-el="controls" class="slider-control">
+                                <div data-glide-el="controls" class="slider-control pc-visible">
                                     <button data-glide-dir="<" class="slider-control__button">
                                         <span class="material-icons-round">
                                             chevron_left
@@ -250,8 +272,8 @@
                                             <div class="card-body">
                                                 <h6 class="card-title">{{product.title }}</h6>
                                                 <div class="card-info-block">
-                                                    <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
+                                                    <p class="card-text card-manufacturer">Производитель: {{product.manufacturer}}</p>
+                                                    <p class="card-text card-category">Категория: {{product.category}}</p>
                                                 </div>
                                                 <div class="card-footer-block">
                                                     <p class="card-price product_price">{{product.price}}</p>
@@ -282,4 +304,4 @@
 {% block scripts %}
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/product-price.js' %}"></script>
-{% endblock scripts %}~
+{% endblock scripts %}

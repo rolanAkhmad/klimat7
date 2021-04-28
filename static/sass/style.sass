@@ -180,25 +180,6 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
             display: flex
             padding: 5px
 
-    
-
-
-//    login-signup страница и связанные с ней элементы
-        
-
-// .signup-form
-//     position: relative
-//     display: flex
-//     justify-content: space-between
-//     flex-direction: column
-//     margin-top: 60px
-//     border: 1px solid $gray
-//     padding: 15px 15px
-//     border-radius: 4px
-//     & > form
-//         display: flex
-//         justify-content: space-between
-//         flex-direction: column
 
 .login-form
     position: relative
@@ -242,7 +223,12 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
 .form-button
     padding: 10px 0px
 
-
+.company-info
+    border-radius: 4px
+    padding: 20px
+    border: 1px solid $gray
+    &__h4
+    &__p
 
 
 @media screen and (max-width:1200px)
@@ -298,7 +284,7 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
                     margin-left: 5px
                     line-height: 1.5
         &-menu
-            display: none !important
+            display: none
             transition: all 0.1s ease-out 0.1s;
             height: stretch;
             overflow-y: auto;
@@ -352,8 +338,9 @@ p, li, button, h1,h2,h3,h4,h5,h6, a, input
         display: none !important
 
 
-
-
+@media screen and (max-width:340px)
+    .header-buttons-group_cart-wish
+        display: none
 
 
 

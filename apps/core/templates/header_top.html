@@ -41,7 +41,7 @@
         </div>
         <div class="header-buttons">
             <!-- search -->
-            <div class="header-buttons-group header-buttons-group_search">
+            <div class="header-buttons-group header-buttons-group_search pc-visible">
                 <button title="Поиск" class="btn btn-outline-light header-buttons__search-btn header-buttons-group__btn">
                     <span class="material-icons lh-1_5">
                         search
@@ -118,6 +118,14 @@
         <div class="phone-visible">
             <div class="header-logo header-menu__logo">
                 <a class="" href="{% url 'index' %}"><img src="{% static 'images/klimat7-logo.svg' %}" heigth="100" width="130" alt="klimat7 logo"></a>
+                <!-- menu -->
+                <div class="header-buttons-group header-buttons-group_menu">
+                    <a href="#" class="btn btn-outline-primary header-buttons__menu-btn menu-btn header-buttons-group__btn">
+                        <span class="material-icons lh-1_5">
+                            menu
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
         <ul class="header-menu__navbar-ul">
@@ -185,7 +193,7 @@
                     </div>
                 </div>
                 <!-- login/register -->
-                <div class="header-buttons-group header-buttons-group_login-register pc-visible">
+                <div class="header-buttons-group">
                     {% if request.user.is_authenticated %}
                         <div class="input-group">
                             <a href="" title="Профиль" class="btn btn-outline-primary header-buttons-group__btn">
@@ -207,14 +215,7 @@
                         </a>
                     {% endif %}
                 </div>
-                <!-- menu -->
-                <div class="header-buttons-group header-buttons-group_menu">
-                    <a href="#" class="btn btn-outline-primary header-buttons__menu-btn menu-btn header-buttons-group__btn">
-                        <span class="material-icons lh-1_5">
-                            menu
-                        </span>
-                    </a>
-                </div>
+                
             </div>
         </div>
     </div>
