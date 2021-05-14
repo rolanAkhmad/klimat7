@@ -3,55 +3,63 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
 {% endblock css %}
 
 
-{% block title %} {{ product.title }}  {{ product.category }} {% endblock title %}
+{% block title %} {{ product.category }} {{ product.title }}   {% endblock title %}
 
 {% block content %}
 <div id="productapp">
     <div class="container">
         <div class="col-lg-12">
             <div class="product-details">
-                <div class="row">
-                    <div class="col-lg-12">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product-details-box">
-                            <img class="product-details__image" style="width:100%"src="{{ product.image.url }}" alt="">
-                            <div class="product-details-images">
-                                {% comment %} {% for image in product.images %}
-
-                                {% endfor %} {% endcomment %}
+                <div class="row mb-4">
+                    <div class="col-md-7">
+                        <div class="image-gallery">
+                            <div class="image-gallery-header">
+                                {% for image in product.get_image_gallery %}
+                                    {% if forloop.first %}
+                                        <img class="image-gallery__image" src="{{ image.medium_image.url }}" alt="{{ image.product.title }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="image-gallery-thumbnails">
+                                {% for image in product.get_image_gallery %}
+                                    <img class="image-gallery__image"src="{{ image.medium_image.url }}" alt="{{ image.product.title }}">
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="product-details-box">
-                            <div class="product-details-box__top">
-                                <h5 class="product-details__title">{{ product.title }}</h5>
-                                <span class="product-details__category">{{ product.category }}</span>
-                                <p class="product-details__price">{{ product.price }}</p>
-                                <p class="product-details__description">{{ product.description }}</p>
+                    <div class="col-md-5">
+                        <div class="product-info">
+                            <div class="product-info-header">
+                                <h5 class="product-info__title">{{ product.title }}</h5>
+                                <span class="product-info__category"> <a href="{% url 'category_detail' product.category.slug %}">{{ product.category }} </a></span>
+                                <p class="product-info__price product_price">{{ product.price }}</p>
+                                <p class="product-info__description">{{ product.description }}</p>
                             </div>
-                            <div class="product-details-box__bottom">
-                                <div class="row align-items-center">
-                                    <div class="col-md-3">
-                                        <div class="input-group">
-                                            <button class="btn btn-primary minus">-</button>
-                                            <input class="count-input" type="text" class="form-control" value="1" required aria-label="Username">
-                                            <button class="btn btn-primary plus">+</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <button class="btn btn-primary product-details__button" data-id="{{ product.id }}">В корзину</button>
-                                    </div>
+                            <div class="product-info-footer">
+                                <div class="input-group more-less-input">
+                                    <button class="btn btn-outline-primary minus more-less-input__minus">-</button>
+                                    <input class="count-input more-less-input__input" type="text" class="form-control" value="1" required aria-label="Username">
+                                    <button class="btn btn-outline-primary plus more-less-input__plus">+</button>
+                                </div>
+                                <div class="input-group">
+                                    <button class="btn product-info__cart-btn" data-id="{{ product.id }}">
+                                        <span class="">
+                                            Добавить
+                                        </span>
+                                        <span class="material-icons-round lh-1_5">
+                                            shopping_cart
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -80,6 +88,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-5">
+                        <div class="review">
+                            <div class="review-header">
+                                
+                                <h5 class="review__name">Валерий Тихунов</h5>
+                                <span class="review__">Очень хорошо</span>
+                            </div>
+                            <p class="review__text">{{ product.description }}</p>
+                            <div class="review-footer">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,12 +108,10 @@
 
 
 {% block scripts %}
-<script>
-    var num = $('.product-details__price').html()
-    var num = parseFloat(num)
-    var result = num.toLocaleString();
-    var num = $('.product-details__price').html(result + ' &#8376')
 
+
+
+<script>
     $('.plus').on('click', function(){
         var value = parseInt($('.count-input').val())
         value += 1
@@ -108,7 +126,7 @@
         $('.count-input').val(value)
     })
 
-    $('.product-details__button').on('click', function(){
+    $('.product-info__cart-btn').on('click', function(){
         product_id = $(this).attr('data-id')
         count = parseInt($('.count-input').val())
 
@@ -137,4 +155,6 @@
         })
     })
 </script>
+
+<script src="{% static 'js/product-price.js' %}"></script>
 {% endblock %}

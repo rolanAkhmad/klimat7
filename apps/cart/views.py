@@ -11,7 +11,7 @@ def cart(request):
 
     for item in cart:
         product = item['product']
-        b = "{'id': '%s', 'title': '%s', 'price': '%s', 'quantity': '%s', 'total_price': '%s', 'image': '%s', 'get_absolute_url': '%s'}," % (product.id, product.title, product.price, item['quantity'], item['total_price'], product.image.url, product.get_absolute_url)
+        b = "{'id': '%s', 'title': '%s', 'price': '%s', 'quantity': '%s', 'total_price': '%s', 'image': '%s', 'get_absolute_url': '%s'}," % (product.id, product.title, product.price, item['quantity'], item['total_price'], product.get_main_image, product.get_absolute_url)
         productsstring += b
 
     context = {

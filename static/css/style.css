@@ -1,5 +1,18 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600&display=swap");
+@font-face {
+  font-family: SegoeUI;
+  /* Гарнитура шрифта */
+  src: url(../fonts/pompadur.eot);
+  /* Для IE5-8 */
+  src: local(SegoeUI), url(../fonts/segoeUI.ttf);
+  /* Для остальных браузеров */
+}
+
+p, li, button, h1, h2, h3, h4, h5, h6, a, input {
+  font-family: -apple-system, BlinkMacSystemFont, "SegoeUI", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 html {
   height: 100%;
 }
@@ -275,6 +288,169 @@ footer {
   margin-bottom: 0;
 }
 
+.order-form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #e1e1e1;
+  padding: 15px 15px;
+  border-radius: 4px;
+}
+
+.order-form > table {
+  margin: 20px 0px;
+}
+
+.order-form-button {
+  padding: 10px 0px;
+}
+
+.form-success {
+  display: none;
+}
+
+.checkout-form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #e1e1e1;
+  padding: 15px 15px;
+  border-radius: 4px;
+}
+
+.checkout-form > form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-item {
+  margin-top: 15px;
+}
+
+.form-input {
+  margin-top: 7px;
+}
+
+.form-button {
+  margin-top: 15px;
+  padding: 10px 0px;
+}
+
+.checkout-success-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  border-radius: 4px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px;
+}
+
+.checkout-success-box__title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 15px;
+}
+
+.count-input {
+  width: 50px;
+  outline: none;
+  border: none;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  text-align: center;
+}
+
+.product-info {
+  border: 1px solid #e1e1e1;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.product-info__title {
+  font-weight: 600;
+}
+
+.product-info__description {
+  color: #777;
+  font-size: 16px;
+  max-height: 344px;
+  overflow-y: hidden;
+}
+
+.product-info__price {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.product-info-header {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.product-info-footer {
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product-info__cart-btn {
+  margin-left: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  background: #0063d1;
+  color: #fff;
+}
+
+.product-info__cart-btn > span:first-child {
+  margin-left: 15px;
+}
+
+.product-info__cart-btn > span + span {
+  padding: 5px 12px;
+}
+
+.product-info__cart-btn:hover {
+  background: transparent;
+}
+
 .store-product-area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -349,57 +525,6 @@ footer {
   text-decoration: underline;
 }
 
-.product-details__category {
-  font-size: 14px;
-  display: block;
-  margin-bottom: 20px;
-  color: #777;
-}
-
-.product-details__price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #0063d1;
-}
-
-.product-details__description {
-  color: #777;
-}
-
-.product-details__button {
-  border-radius: 2px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  text-transform: uppercase;
-  background-color: #0063d1;
-  padding: 12px 25px;
-}
-
-.product-details__detail-description {
-  color: #777;
-}
-
-.product-details-box__top {
-  padding-bottom: 40px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid #e1e1e1;
-}
-
-.product-details-box__bottom {
-  padding-bottom: 40px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid #e1e1e1;
-}
-
-.count-input {
-  width: 50px;
-  outline: none;
-  border: none;
-  border-top: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
-  text-align: center;
-}
-
 .count-input {
   width: 50px;
   text-align: center;
@@ -442,19 +567,6 @@ td {
   vertical-align: middle;
 }
 
-@font-face {
-  font-family: SegoeUI;
-  /* Гарнитура шрифта */
-  src: url(../fonts/pompadur.eot);
-  /* Для IE5-8 */
-  src: local(SegoeUI), url(../fonts/segoeUI.ttf);
-  /* Для остальных браузеров */
-}
-
-p, li, button, h1, h2, h3, h4, h5, h6, a, input {
-  font-family: -apple-system, BlinkMacSystemFont, "SegoeUI", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
 .lh-1_5 {
   line-height: 1.5;
 }
@@ -487,6 +599,28 @@ p, li, button, h1, h2, h3, h4, h5, h6, a, input {
   position: absolute !important;
   top: -6px !important;
   right: -6px;
+}
+
+.add-to-cart-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0px 0px;
+}
+
+.add-to-cart-btn__text {
+  padding: 0px 10px;
+}
+
+.add-to-cart-btn__icon {
+  padding: 5px 12px;
+  border-left: 1px solid #4286eb;
 }
 
 .header-buttons__search-btn {
@@ -832,6 +966,95 @@ p, li, button, h1, h2, h3, h4, h5, h6, a, input {
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #e1e1e1;
+}
+
+.more-less-input__minus {
+  width: 45px;
+  height: 45px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.more-less-input__plus {
+  width: 45px;
+  height: 45px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.image-gallery__image {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.image-gallery-thumbnails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+}
+
+.image-gallery-thumbnail > .image-gallery__image {
+  margin-left: 20px;
+}
+
+.image-gallery-header > .image-gallery__image {
+  width: 420px;
+  display: block;
+  height: 420px;
+  margin: 0 auto;
+  border: none;
+}
+
+.image-gallery-header {
+  border: 1px solid #e1e1e1;
+  border-bottom: none;
+  padding: 30px 0px;
+}
+
+.review {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
+}
+
+.review-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.review__name {
+  font-weight: 600;
+}
+
+.review__text {
+  padding: 8px 20px;
+  max-height: 140px;
+  font-size: 15px;
+  color: #777;
+  overflow-y: hidden;
 }
 
 @media screen and (max-width: 1200px) {

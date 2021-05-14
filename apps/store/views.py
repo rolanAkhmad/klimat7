@@ -8,7 +8,7 @@ from .models import Product, Category
 
 class ProductList(ListView):
     model = Product
-    paginate_by = 8
+    paginate_by = 9
     template_name = 'product_list.html'
 
 def product_detail(request, category_slug, slug):
@@ -24,7 +24,7 @@ def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
     object_list = category.products.all()
 
-    paginator = Paginator(object_list, 8)
+    paginator = Paginator(object_list, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

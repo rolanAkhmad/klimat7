@@ -31,7 +31,6 @@ new Glide('#top-slider',{
 }).mount()
 
 
-
 new Glide('#gas_boilers_slider',{
     type: 'slider',
     startAt: 0,
