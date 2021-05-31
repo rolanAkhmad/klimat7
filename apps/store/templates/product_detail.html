@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="product-details">
                 <div class="row mb-4">
-                    <div class="col-md-7">
+                    <div class="col-md-4">
                         <div class="image-gallery">
                             <div class="image-gallery-header">
                                 {% for image in product.get_image_gallery %}
@@ -23,18 +23,12 @@
                                     {% endif %}
                                 {% endfor %}
                             </div>
-                            <div class="image-gallery-thumbnails">
-                                {% for image in product.get_image_gallery %}
-                                    <img class="image-gallery__image"src="{{ image.medium_image.url }}" alt="{{ image.product.title }}">
-                                {% endfor %}
-                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-8">
                         <div class="product-info">
                             <div class="product-info-header">
-                                <h5 class="product-info__title">{{ product.title }}</h5>
-                                <span class="product-info__category"> <a href="{% url 'category_detail' product.category.slug %}">{{ product.category }} </a></span>
+                                <h5 class="product-info__title">  {{ product.title }}</h5>
                                 <p class="product-info__price product_price">{{ product.price }}</p>
                                 <p class="product-info__description">{{ product.description }}</p>
                             </div>
@@ -58,49 +52,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Дополнительно
-                                </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="product-details__detail-description">
-                                            {{ product.detail_description }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Характеристики
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                    </div>
-                                </div>
-                            </div>
+                {% comment %} <div class="row">
+                    <div class="product-footer">
+                        <div class="product-description">
+                            {{ product.description }}
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="review">
-                            <div class="review-header">
-                                
-                                <h5 class="review__name">Валерий Тихунов</h5>
-                                <span class="review__">Очень хорошо</span>
-                            </div>
-                            <p class="review__text">{{ product.description }}</p>
-                            <div class="review-footer">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
 </div>
@@ -108,9 +66,16 @@
 
 
 {% block scripts %}
-
-
-
+<script src="{% static 'js/vanila_tilt.js' %}"></script>
+<script type="text/javascript">
+	VanillaTilt.init(document.querySelector(".image-gallery"), {
+		max: 25,
+		speed: 400
+	});
+	
+	//It also supports NodeList
+	VanillaTilt.init(document.querySelectorAll(".image-gallery"));
+</script>
 <script>
     $('.plus').on('click', function(){
         var value = parseInt($('.count-input').val())

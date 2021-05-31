@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/glide.core.css' %}">
@@ -27,7 +27,6 @@
     </header>
 
     <main class="main-container">
-
         {% block content %}
         {% endblock content %}
     </main>
@@ -72,6 +71,7 @@
                     </div>
                 </div>
                 <div class="footer-col">
+                    <h4 class="footer__nav-title">Дополнительно</h4>
                     <ul class="footer__nav footer__ul">
                         <li class="footer__list"><a href="" class="footer__link">Доставка</a></li>
                         <li class="footer__list"><a href="" class="footer__link">Условия соглашения</a></li>
@@ -88,18 +88,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="{% static 'js/main.js' %}"></script>
     <script>
         $('.header-buttons__search-btn').click(function() {
             $('.header-search').toggleClass('d-block')
         })
         
-        $('.header-buttons__menu-btn').click(function() {
-            $('.header-menu').toggleClass('d-block')
-            if($('.header-menu').hasClass('d-block')){
-                $('.header-buttons__menu-btn').html('<span class="material-icons-round lh-1_5"> close </span>')
-            }else{
-                $('.header-buttons__menu-btn').html('<span class="material-icons-round lh-1_5"> menu </span>')
-            }
+        $('.header-buttons__menu-btn').click(function(){
+            toogleMenu($(this), 'close', 'menu')
+        })
+
+        $('.header-menu__navbar-link_spoiler').click(function(){
+            toogleMenu($('.nav-menu__categoryes'), 'expand_less', 'expand_more')
         })
     </script>
     {% block scripts %}

@@ -37,7 +37,13 @@
                                             </div>
                                         </td>
                                         <td class="product_price" data-price="{{ product.price }}" data-id="{{ product.id }}" id="product-price-{{product.id}}">{{ product.price }}</td>
-                                        <td><button type="button" data-id="{{product.id}}" class="btn-close" aria-label="Close"></button></td>
+                                        <td>
+                                            <button type="button" data-id="{{product.id}}" class="btn delete-btn">
+                                                <span class="material-icons-outlined">
+                                                    delete
+                                                </span>
+                                            </button>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 <tr>
@@ -156,7 +162,7 @@
         showPrice()
     })
 
-    $('.btn-close').on('click', function(){
+    $('.delete-btn').on('click', function(){
         product_id = $(this).attr('data-id')
 
         data = {

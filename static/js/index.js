@@ -18,12 +18,25 @@ new Glide('#new-arriwal-slider',{
     },
 }).mount()
 
-new Glide('#top-slider',{
-    type: 'slider',
+new Glide('#new-arriwal-slider',{
+    type: 'carousel',
     startAt: 0,
     perView: 2,
-    gap: 20,
-    bound: true,
+    gap: 10,
+    peek:{ before: 0, after: 50 },
+    breakpoints: {
+        600: { perView: 1 },
+        1200: { perView: 1 }
+    },
+}).mount()
+
+
+new Glide('#top-slider',{
+    type: 'carousel',
+    startAt: 0,
+    perView: 2,
+    gap: 10,
+    peek:{ before: 0, after: 50 },
     breakpoints: {
         600: { perView: 1 },
         1200: { perView: 1 }
@@ -32,27 +45,39 @@ new Glide('#top-slider',{
 
 
 new Glide('#gas_boilers_slider',{
-    type: 'slider',
+    type: 'carousel',
     startAt: 0,
     perView: 4,
-    gap: 20,
-    breakpoints: {
-        768: { perView: 1 },
-        992: { perView:2},
-        1200: { perView: 3 }
-    },
-    bound: true,
+    gap: 10,
+    peek:{ before: 0, after: 50 },
+    breakpoints:{
+        1120:{
+            perView: 3
+        },
+        960:{
+            perView: 2
+        },
+        620:{
+            perView: 1
+        }
+    }
 }).mount()
 
 new Glide('#gas_gorel_slider',{
-    type: 'slider',
+    type: 'carousel',
     startAt: 0,
     perView: 4,
-    gap: 20,
-    breakpoints: {
-        768: { perView: 1 },
-        992: { perView:2},
-        1200: { perView: 3 }
-    },
-    bound: true
+    gap: 10,
+    peek:{ before: 0, after: 50 },
+    breakpoints:{
+        1120:{
+            perView: 3
+        },
+        960:{
+            perView: 2
+        },
+        620:{
+            perView: 1
+        }
+    }
 }).mount()

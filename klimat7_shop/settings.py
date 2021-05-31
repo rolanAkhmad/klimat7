@@ -22,6 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
 
+    'import_export',
+    'ckeditor',
+
     'apps.cart',
     'apps.core',
     'apps.order',
@@ -96,10 +99,14 @@ USE_TZ = True
 
 
 #STATIC_URL = '/static/'
-#STATIC_ROOT = BASE_DIR / 'static/'
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATIC_ROOT = (os.path.join(BASE_DIR, 'static'),)
+# STATIC_ROOT = BASE_DIR / 'static/'
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'

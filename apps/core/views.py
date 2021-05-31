@@ -8,7 +8,7 @@ from apps.store.models import Product, Category
 from .models import *
 
 def frontpage(request):
-    new_product_list = Product.objects.order_by('-date_added')
+    new_product_list = Product.objects.order_by('-date_added')[:10]
 
     boiler_list = Product.objects.filter(category__slug="gas_boiler")[:10]
 

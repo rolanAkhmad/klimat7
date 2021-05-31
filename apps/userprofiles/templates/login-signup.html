@@ -13,126 +13,6 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-lg-9">
-                <div class="card-slider" id="gas_boiler_slider">
-                    <div class="slider-header">
-                        <h4 class="slider-header__h4">Газовые котлы</h2>
-                        <div class="slider-header-box">
-                            <div data-glide-el="controls[nav]" class="slider-control-items">
-                                {% for product in boiler_list %}
-                                    <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
-                                {% endfor %}
-                            </div>
-                            <div data-glide-el="controls" class="slider-control">
-                                <button data-glide-dir="<" class="slider-control__button">
-                                    <span class="material-icons-round">
-                                        chevron_left
-                                    </span>
-                                </button>
-                                <button data-glide-dir=">" class="slider-control__button">
-                                    <span class="material-icons-round">
-                                        chevron_right
-                                    </span>
-                                </button>
-                            </div>
-                            <a href="{% url 'category_detail' boiler_list.0.category.slug %}" class="slider-header__button btn btn-outline-primary">Смотреть всё</a>
-                        </div>
-                    </div>
-                    <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
-                            {% for product in boiler_list %}
-                                <li class="glide__slide">
-                                    <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
-                                        <div class="card-img-block">
-                                            <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
-                                        </div>
-                                        <div class="card-body">
-                                            <h6 class="card-title">{{product.title }}</h6>
-                                            <div class="card-info-block">
-                                                <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                <p class="card-text card-category">Категория: Газовые котлы</p>
-                                            </div>
-                                            <div class="card-footer-block">
-                                                <p class="card-price product_price">{{product.price}}</p>
-                                                <div class="card-buttons">
-                                                    <button class="btn btn-outline-danger card-buttons__favorite-btn">
-                                                        <span class="material-icons-round">
-                                                            favorite_border
-                                                        </span>
-                                                    </button>
-                                                    <button class="btn btn-outline-primary">
-                                                        Добавить
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>                                            
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="store-box">
-                    <div class="card-slider" id="gas_gorel_slider">
-                        <div class="slider-header">
-                            <h4 class="slider-header__h4">Газовые горелки</h2>
-                            <div class="slider-header-box">
-                                <div data-glide-el="controls[nav]" class="slider-control-items">
-                                    {% for product in burners_list %}
-                                        <button data-glide-dir="={{forloop.counter}}" class="slider-control-items__button btn btn-outline-secondary"></button>
-                                    {% endfor %}
-                                </div>
-                                <div data-glide-el="controls" class="slider-control">
-                                    <button data-glide-dir="<" class="slider-control__button">
-                                        <span class="material-icons-round">
-                                            chevron_left
-                                        </span>
-                                    </button>
-                                    <button data-glide-dir=">" class="slider-control__button">
-                                        <span class="material-icons-round">
-                                            chevron_right
-                                        </span>
-                                    </button>
-                                </div>
-                                <a href="{% url 'category_detail' burners_list.0.category.slug %}" class="store-box__link btn btn-outline-primary">Смотреть всё</a>
-                            </div>
-                        </div>
-                        <div class="glide__track" data-glide-el="track">
-                            <ul class="glide__slides">
-                                {% for product in burners_list %}
-                                    <li class="glide__slide">
-                                        <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
-                                            <div class="card-img-block">
-                                               <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
-                                            </div>
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{product.title }}</h6>
-                                                <div class="card-info-block">
-                                                    <p class="card-text card-manufacturer">Производитель: Buran boiler</p>
-                                                    <p class="card-text card-category">Категория: Газовые котлы</p>
-                                                </div>
-                                                <div class="card-footer-block">
-                                                    <p class="card-price product_price">{{product.price}}</p>
-                                                    <div class="card-buttons">
-                                                        <button class="btn btn-outline-danger card-buttons__favorite-btn">
-                                                            <span class="material-icons-round">
-                                                                favorite_border
-                                                            </span>
-                                                        </button>
-                                                        <button class="btn btn-outline-primary">
-                                                            Добавить
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>                                            
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-3">
                 <div class="login-form form-box">
                     <form class="form login-form-form" method="post" action=".">
@@ -154,6 +34,8 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="col-lg-3">
                 <div class="signup-form login-form mt-4">
                     <div class="login-form-header">
                         <h3 class="login-form-header__title">Регистрация</h3>
@@ -185,8 +67,6 @@
                 </div>
             </div>
         </div>
-        
-        
     </div>
 {% endblock content %}
 

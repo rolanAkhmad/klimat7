@@ -2,47 +2,39 @@
 
 {% load static %}
 
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
-{% endblock css %}
-
 {% block title %}
     Магазин
 {% endblock title %}
 
-
 {% block content %}
     <div class="container">
-        <div class="row mb-2">
-             <div class="col-lg-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Магазин</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="row flex-column-reverse flex-lg-row">
-
+        <div class="row flex-lg-row">
             <div class="col-lg-3">
                 {% include 'category_menu.html' %}
             </div>
-
             <div class="col-lg-9">
-                <div class="row">
+                <div class="grid-controller">
+                    <div class="grid-controller__buttons">
+                        <a class="grid-controller__btn list-view btn">
+                            <span class="material-icons lh-1_5">
+                                view_list
+                            </span>
+                        </a>
+                        <a class="grid-controller__btn grid-view btn">
+                            <span class="material-icons lh-1_5">
+                                grid_on
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="store-product-list mb-3">
                     {% for product in object_list %}
-                        <div class="col-lg-4 col-md-6 mb-4">
-                        <a href="{{ product.get_absolute_url }}" class="card card-block-link slider-product-card">
+                        <a class="card card-block-link slider-product-card" href="{{ product.get_absolute_url }}">
                             <div class="card-img-block">
-                                <img src="{{ product.get_main_image.url }}" class="card-img-top card-img" alt="{{ product.title }}">
+                                <img src="{{ product.get_main_image }}" class="card-img-top card-img" alt="{{ product.title }}">
                             </div>
                             <div class="card-body">
-                                <h6 class="card-title">{{product.title }}</h6>
-                                <div class="card-info-block">
-                                    <p class="card-text card-manufacturer">Производитель: {{product.manufacturer}}</p>
-                                    <p class="card-text card-category">Категория: {{ product.category }}</p>
-                                </div>
+                                <h6 class="card-title">{{ product.get_super_title }}</h6>
                                 <div class="card-footer-block">
                                     <p class="card-price product_price">{{product.price}}</p>
                                     <div class="card-buttons">
@@ -58,10 +50,9 @@
                                 </div>
                             </div>                                            
                         </a>
-                    </div>
                     {% endfor %}
                 </div>
-
+                {% comment %} Pagination  {% endcomment %}
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         {% if page_obj.has_previous %}
@@ -100,12 +91,17 @@
                     </ul>
                 </nav>
             </div>
-            
         </div>
     </div>
 {% endblock content %}
 
 
 {% block scripts %}
-<script src="{% static 'js/product-price.js' %}"></script>
+    <script src="{% static 'js/grid-controller.js' %}"></script>
+    <script src="{% static 'js/product-price.js' %}"></script>
+    <script>
+        $('.category-menu__header-button').click(function(){
+            toogleMenu($(this), 'expand_less', 'expand_more')
+        })
+    </script>
 {% endblock scripts %}

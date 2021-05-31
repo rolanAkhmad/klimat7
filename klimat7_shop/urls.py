@@ -7,7 +7,7 @@ from django.contrib.auth import views
 
 from apps.cart.views import checkout, checkout_success, cart
 from apps.core.views import frontpage
-from apps.store.views import product_detail, category_detail, ProductList, search
+from apps.store.views import product_detail, category_detail, product_list, search
 from apps.userprofiles.views import login_signup
 
 from apps.store.api import api_add_to_cart, api_remove_from_cart, api_cart_get_total_length
@@ -25,7 +25,7 @@ urlpatterns = [
     path('', frontpage, name="index"),
     path('admin/', admin.site.urls),
     path('cart/', cart, name="cart"),
-    path('shop/', ProductList.as_view(), name="shop"),
+    path('shop/', product_list, name="shop"),
     path('search/', search, name="search"),
     path('checkout/', checkout, name="checkout"),
     path('checkout/success', checkout_success, name="checkout_success"),
