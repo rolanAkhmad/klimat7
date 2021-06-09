@@ -37,8 +37,9 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     title = models.CharField(verbose_name="Наименование", max_length=255)
     slug = models.SlugField(verbose_name="Артикул", max_length=255)
+    short_description = RichTextField(verbose_name="Краткое описание",blank=True, null=True)
     description = RichTextField(verbose_name="Описание",blank=True, null=True)
-    detail_description = RichTextField(verbose_name="Детальное описание", blank=True, null=True)
+    specifications = RichTextField(verbose_name="Характеристики", blank=True, null=True)
     price = models.FloatField(verbose_name="Цена")
     date_added = models.DateTimeField(verbose_name="Дата добавления", auto_now_add=True)
     in_stock = models.BooleanField(verbose_name="В наличии", default=True)
@@ -58,7 +59,7 @@ class Product(models.Model):
             product_galery_list = self.images.all()
             return product_galery_list[0].thumbnail.url
         except:
-            return "static/images/banner.jpg"
+            return "/static/images/no_photo.jpg"
 
     def get_image_gallery(self):
         try:

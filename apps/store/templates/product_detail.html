@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="product-details">
                 <div class="row mb-4">
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-2">
                         <div class="image-gallery">
                             <div class="image-gallery-header">
                                 {% for image in product.get_image_gallery %}
@@ -24,18 +24,51 @@
                                 {% endfor %}
                             </div>
                         </div>
+                       
                     </div>
                     <div class="col-md-8">
+                        <div class="client-conveniences mb-2">
+                            <div class="client-conveniences-item">
+                                <span class="material-icons">
+                                    credit_card
+                                </span>
+                                <span class="pc-visible">
+                                    Удобная оплата
+                                </span>
+                            </div>
+                            <div class="client-conveniences-item">
+                                <span class="material-icons">
+                                    local_shipping
+                                </span>
+                                <span class="pc-visible">
+                                    Быстрая доставка
+                                </span>
+                            </div>
+                            <div class="client-conveniences-item">
+                                <span class="material-icons">
+                                    receipt_long
+                                </span>
+                                <span class="pc-visible">
+                                    Гарантия качества
+                                </span>
+                            </div>
+                            <div class="client-conveniences-item">
+                                <span class="material-icons">
+                                    help
+                                </span>
+                                <span class="pc-visible">Помощь клиенту</span>
+                            </div>
+                        </div>
                         <div class="product-info">
                             <div class="product-info-header">
                                 <h5 class="product-info__title">  {{ product.title }}</h5>
                                 <p class="product-info__price product_price">{{ product.price }}</p>
-                                <p class="product-info__description">{{ product.description }}</p>
+                                <span class="product-info__description">{{ product.short_description|safe }}</span>
                             </div>
                             <div class="product-info-footer">
                                 <div class="input-group more-less-input">
                                     <button class="btn btn-outline-primary minus more-less-input__minus">-</button>
-                                    <input class="count-input more-less-input__input" type="text" class="form-control" value="1" required aria-label="Username">
+                                    <input class="count-input more-less-input__input" type="number" class="form-control" value="1" required aria-label="Username">
                                     <button class="btn btn-outline-primary plus more-less-input__plus">+</button>
                                 </div>
                                 <div class="input-group">
@@ -52,13 +85,40 @@
                         </div>
                     </div>
                 </div>
-                {% comment %} <div class="row">
-                    <div class="product-footer">
-                        <div class="product-description">
-                            {{ product.description }}
+                 <div class="product-additional-materials d-flex justify-content-between">
+                        <div class="product-additional-materials__item">
+                            <span class="material-icons">
+                                description
+                            </span>
+                            <span class="pc-visible">Описание</span>
+                        </div>
+                        <div class="product-additional-materials__item product-additional-materials__item_active">
+                            <span class="material-icons">
+                                straighten
+                            </span>
+                            <span class="pc-visible">Характеристики</span>
+                        </div>
+                        <div class="product-additional-materials__item">
+                            <span class="material-icons">
+                                videocam
+                            </span>
+                            <span class="pc-visible">Видео</span>
+                        </div>
+                        <div class="product-additional-materials__item">
+                            <span class="material-icons">
+                                reviews
+                            </span>
+                            <span class="pc-visible">Отзывы</span>
                         </div>
                     </div>
-                </div> {% endcomment %}
+                <div class="product-info">
+                    <div class="product-specification">
+                        <p class="product-info__specifications">{{ product.specifications|safe }}</p>
+                    </div>   
+                    <div class="product-description">
+                        {{ product.description|safe }}
+                    </div>
+                </div>
             </div>
         </div>
 </div>
@@ -95,7 +155,7 @@
         product_id = $(this).attr('data-id')
         count = parseInt($('.count-input').val())
 
-        if(count===0){ count = paseInt(1) }
+        if(count <= 0){ count = paseInt(1) }
 
         data = {
             product_id: product_id,

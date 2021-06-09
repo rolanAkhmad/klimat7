@@ -42,7 +42,7 @@ class ProductAdmin(ImportExportActionModelAdmin):
             'fields': ('title','slug','category','price','in_stock','manufacturer')
         }),
         ('Описание', {
-            'fields': ('description', 'detail_description')
+            'fields': ('short_description','description', 'specifications')
         }),
     )
     

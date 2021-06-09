@@ -35,27 +35,7 @@
                 </div>
                 <div class="store-product-list mb-3">
                     {% for product in object_list %}
-                        <a class="card card-block-link slider-product-card" href="{{ product.get_absolute_url }}">
-                            <div class="card-img-block">
-                                <img src="{{ product.get_main_image }}" class="card-img-top card-img" alt="{{ product.title }}">
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title">{{ product.get_super_title }}</h6>
-                                <div class="card-footer-block">
-                                    <p class="card-price product_price">{{product.price}}</p>
-                                    <div class="card-buttons">
-                                        <button class="btn btn-outline-danger card-buttons__favorite-btn">
-                                            <span class="material-icons-round">
-                                                favorite_border
-                                            </span>
-                                        </button>
-                                        <button class="btn btn-outline-primary">
-                                            Добавить
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>                                            
-                        </a>
+                        {% include 'product_card.html' %}
                     {% endfor %}
                 </div>
                 <nav aria-label="Page navigation example">
@@ -102,5 +82,11 @@
 
 
 {% block scripts %}
-<script src="{% static 'js/product-price.js' %}"></script>
+    <script src="{% static 'js/grid-controller.js' %}"></script>
+    <script src="{% static 'js/product-price.js' %}"></script>
+    <script>
+        $('.category-menu__header').click(function(){
+            toogleMenu($('.category-menu__header-button'), 'expand_more', 'expand_less')
+        })
+    </script>
 {% endblock scripts %}
