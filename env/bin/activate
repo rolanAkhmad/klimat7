@@ -28,7 +28,7 @@ deactivate () {
     fi
 
     unset VIRTUAL_ENV
-    if [ ! "${1:-}" = "nondestructive" ] ; then
+    if [ ! "$1" = "nondestructive" ] ; then
     # Self destruct!
         unset -f deactivate
     fi
@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/mnt/c/Users/z00sharp/Desktop/django_apps/klimat7/env"
+VIRTUAL_ENV="/django_projects/klimat7/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

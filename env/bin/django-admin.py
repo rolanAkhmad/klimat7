@@ -1,4 +1,4 @@
-#!/mnt/c/Users/z00sharp/Desktop/django_apps/klimat7/env/bin/python3
+#!/django_projects/klimat7/env/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
